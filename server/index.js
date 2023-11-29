@@ -1,20 +1,26 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./Connection/Connection.js";
-
+import signIn from "./Routes/signIn.js";
+import signUp from "./Routes/signUp.js";
 
 const app = express();
 
-dotenv.config({path: ".env"});
+app.use(express.json());
 
-const port =process.env.PORT || 3000;
+dotenv.config({ path: ".env" });
+
+const port = process.env.PORT || 3000;
 connectDB();
 
-app.get ('/', (req, res) => {
-    res.send('hello there');
-}) 
+app.use(signIn);
+app.use(signUp);
 
-app.listen(3000, ()=>{
-    console.log("server is running on port 3000");
+app.get('/', (req, res) => {
+    res.send('hello there');
+})
+
+app.listen(port, () => {
+    console.log("server is running on port", port);
 })
 
