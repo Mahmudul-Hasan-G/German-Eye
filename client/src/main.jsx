@@ -9,9 +9,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from './Components/Home/Home.jsx'
-import Library from './Components/Library/Library';
-import Insert from './Components/Insert/Insert';
-import LogIn from './Components/LogIn/LogIn';
+import Library from './Components/Library/Library.jsx';
+import Insert from './Components/Insert/Insert.jsx';
+import SignIn from './Components/SignIn/SignIn.jsx';
 
 
 const router = createBrowserRouter([
@@ -32,8 +32,8 @@ const router = createBrowserRouter([
         element: <Insert />,
       },
       {
-        path: "/logIn",
-        element: <LogIn />,
+        path: "/signin",
+        element: <SignIn />,
       },
     ]
   },
