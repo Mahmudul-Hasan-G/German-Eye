@@ -8,11 +8,11 @@ function App() {
 
 
   return (
-    <>
+    <div className='mx-6'>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </div>
   )
 }
 
