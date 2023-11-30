@@ -3,6 +3,7 @@
 const Insert = () => {
     return (
         <div>
+
         <form>
       <div className="flex flex-col items-center justify-center h-screen border rounded shadow-lg p-6">
       <h1 className="text-4xl font-bold mb-6 text-yellow-500 border-b-2 border-red-500 rounded-full px-2 py-1">
@@ -75,6 +76,7 @@ const Insert = () => {
       </button>
     </div>
     </form>
+            
         </div>
     );
 };
