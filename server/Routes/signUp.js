@@ -3,16 +3,16 @@ import User from '../Model/UserSchema.js';
 
 const router = express.Router();
 
-router.post('/signup', async(req, res) => {
-    
+router.post('/signup', async (req, res) => {
 
-    const {name, email, password, city}= req.body;
-    try{
-const user= new User({name, email, password, city});
 
-await user.save();
+    const { name, email, city, password, cPassword } = req.body;
+    try {
+        const user = new User({ name, email, city, password, cPassword });
+
+        await user.save();
     }
-    catch(err){
+    catch (err) {
 
         res.json(err.message);
     }
