@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const SignIn = () => {
@@ -30,6 +31,7 @@ const SignIn = () => {
           <button className="btn btn-primary">Login</button>
         </div>
       </form>
+      <p>If it's your first time, <Link to="/signup">Sign Up!</Link></p>
     </div>
   </div>
 </div>
@@ -37,4 +39,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;;
+export default SignIn;
