@@ -1,84 +1,158 @@
-
+import axios from 'axios';
+import { useState } from 'react';
 
 const Insert = () => {
-    return (
-        <div>
 
-        <form>
-      <div className="flex flex-col items-center justify-center h-screen border rounded shadow-lg p-6">
-      <h1 className="text-4xl font-bold mb-6 text-yellow-500 border-b-2 border-red-500 rounded-full px-2 py-1">
-        Where are we right now?
-      </h1>
+  const [place, setPlace] = useState({
+    city: '',
+    address: '',
+    zipCode: '',
+    image: null,
+    placeName: '',
+    description: '',
+  });
 
-      <div className="container mx-auto p-4">
-        <div className="mb-4">
-          <h3 className="text-lg font-bold mb-2">City</h3>
-          <input
-            className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder="Enter name of the city you're visiting"
-          />
+  const handleInputChange = (e) => {
+    setPlace({
+      ...place,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setPlace({
+      ...place,
+      image: file,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // const placeToSend = new PlaceData();
+    // placeToSend.append('city', place.city);
+    // placeToSend.append('address', place.address);
+    // placeToSend.append('zipCode', place.zipCode);
+    // placeToSend.append('image', place.image);
+    // placeToSend.append('placeName', place.placeName);
+    // placeToSend.append('description', place.description);
+    const formData = new FormData();
+    formData.append('city', place.city);
+    formData.append('address', place.address);
+    formData.append('zipCode', place.zipCode);
+    formData.append('image', place.image);
+    formData.append('placeName', place.placeName);
+    formData.append('description', place.description);
+
+
+    try {
+      await axios.post('http://localhost:5000/insert', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      // Handle success (data saved to MongoDB)
+    } catch (error) {
+      console.error('Error signing up:', error.response.data);
+    }
+  };
+
+
+  return (
+
+    <div>
+
+      <form onSubmit={handleSubmit}>
+        <div className="flex flex-col items-center justify-center h-screen border rounded shadow-lg p-6">
+          <h1 className="text-4xl font-bold mb-6 text-yellow-500 border-b-2 border-red-500 rounded-full px-2 py-1">
+            Where are we right now?
+          </h1>
+
+          <div className="container mx-auto p-4">
+            <div className="mb-4">
+              <h3 className="text-lg font-bold mb-2">City</h3>
+              <input
+                className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                type="text"
+                name="city"
+                value={place.city}
+                onChange={handleInputChange}
+                placeholder="Enter name of the city you're visiting"
+              />
+            </div>
+
+            <div className="mb-4">
+              <h3 className="text-lg font-bold mb-2">Address</h3>
+              <input
+                className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                type="text"
+                name="address"
+                value={place.address}
+                onChange={handleInputChange}
+                placeholder="Enter the full address"
+              />
+            </div>
+
+            <div className="mb-4">
+              <h3 className="text-lg font-bold mb-2">Zip Code</h3>
+              <input
+                className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                type="text"
+                name="zipCode"
+                value={place.zipCode}
+                onChange={handleInputChange}
+                placeholder="Enter zip code"
+              />
+            </div>
+
+            <div className="mb-4">
+              <h3 className="text-lg font-bold mb-2">Image</h3>
+              <input
+                className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                type="file"
+                accept="*"
+                onChange={handleImageUpload}
+              />
+            </div>
+
+            <div className="mb-4">
+              <h3 className="text-lg font-bold mb-2">Name of the place</h3>
+              <input
+                className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                type="text"
+                name="placeName"
+                value={place.placeName}
+                onChange={handleInputChange}
+                placeholder="what place are you in"
+              />
+            </div>
+
+            <div className="mb-4">
+              <h3 className="text-lg font-bold mb-2">Description Area</h3>
+              <input
+                className="w-full px-3 py-16 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                type="text"
+                name="description"
+                value={place.description}
+                onChange={handleInputChange}
+                placeholder="Describe what we are seeing"
+              />
+            </div>
+
+
+          </div>
+
+          <button
+            className="bg-red-500 text-white font-bold py-3 px-6 rounded mt-4 focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Insert
+          </button>
         </div>
+      </form>
 
-        <div className="mb-4">
-          <h3 className="text-lg font-bold mb-2">Address</h3>
-          <input
-            className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder="Enter the full address"
-          />
-        </div>
-
-        <div className="mb-4">
-          <h3 className="text-lg font-bold mb-2">Zip Code</h3>
-          <input
-            className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder="Enter zip code"
-          />
-        </div>
-
-        <div className="mb-4">
-          <h3 className="text-lg font-bold mb-2">Image</h3>
-          <input
-            className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder="Publish the image"
-          />
-        </div>
-
-        <div className="mb-4">
-          <h3 className="text-lg font-bold mb-2">Name of the place</h3>
-          <input
-            className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder="what place are you in"
-          />
-        </div>
-
-        <div className="mb-4">
-          <h3 className="text-lg font-bold mb-2">Description Area</h3>
-          <input
-            className="w-full px-3 py-16 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder="Describe what we are seeing"
-          />
-        </div>
-
-        
-      </div>
-
-      <button
-        className="bg-red-500 text-white font-bold py-3 px-6 rounded mt-4 focus:outline-none focus:shadow-outline"
-        type="button"
-      >
-        Insert
-      </button>
     </div>
-    </form>
-            
-        </div>
-    );
+  );
 };
 
 export default Insert;
