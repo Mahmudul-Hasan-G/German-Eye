@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./Connection/Connection.js";
 import signIn from "./Routes/signIn.js";
 import signUp from "./Routes/signUp.js";
+import place from "./Routes/place.js";
 import cors from 'cors';
 
 
@@ -19,6 +20,7 @@ connectDB();
 
 app.use(signIn);
 app.use(signUp);
+app.use(place);
 
 app.get('/', (req, res) => {
     res.send('hello there');
