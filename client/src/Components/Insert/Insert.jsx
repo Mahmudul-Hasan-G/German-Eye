@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import Swal from 'sweetalert2'
 
 const Insert = () => {
 
@@ -12,11 +13,38 @@ const Insert = () => {
     description: '',
   });
 
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      console.log(place);
+      const response = await axios.post('http://localhost:5000/insert', place);
+      console.log(response);
+      if (response) {
+        await Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+
+    } catch (error) {
+      console.error(error.message);
+    }
+    //alert("Your work has been saved");
+
+  };
+
   const handleInputChange = (e) => {
     setPlace({
       ...place,
       [e.target.name]: e.target.value,
     });
+    //alert("Your work has been saved");
   };
 
   const handleImageUpload = async (e) => {
@@ -27,6 +55,7 @@ const Insert = () => {
       ...place,
       image: base64Image,
     });
+    //alert("Your work has been saved");
   };
 
   const convertToBase64 = (file) => {
@@ -38,28 +67,19 @@ const Insert = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    try {
-      console.log(place);
-      await axios.post('http://localhost:5000/insert', place);
-    } catch (error) {
-      console.error('Error signing up:', error.response.data);
-    }
-  };
 
 
   return (
 
     <div>
 
+
+      <h1 className="text-center text-4xl font-bold mb-6 text-yellow-500 border-b-2 border-red-500 rounded-full px-2 py-1">
+        Where are we right now?
+      </h1>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col items-center justify-center h-screen border rounded shadow-lg p-6">
-          <h1 className="text-4xl font-bold mb-6 text-yellow-500 border-b-2 border-red-500 rounded-full px-2 py-1">
-            Where are we right now?
-          </h1>
-
           <div className="container mx-auto p-4">
             <div className="mb-4">
               <h3 className="text-lg font-bold mb-2">City</h3>

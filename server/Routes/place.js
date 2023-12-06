@@ -17,6 +17,9 @@ router.post('/insert', async (req, res) => {
 
         await place.save();
 
+
+        res.send('success');
+
     }
     catch (err) {
 

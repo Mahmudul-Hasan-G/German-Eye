@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 const SignUp = () => {
   const [user, setUser] = useState({
@@ -24,7 +25,13 @@ const SignUp = () => {
         password: '',
         cPassword: ''
       });
-
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your data is saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
     } catch (error) {
 
       console.error('Error signing up:', error.response.data);
