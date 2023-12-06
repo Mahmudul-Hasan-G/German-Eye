@@ -15,6 +15,9 @@ const Header = () => {
               <li>
                 <Link to='/library'>Library</Link>
               </li>
+              <li>
+                <Link to='/places'>Places</Link>
+              </li>
               <li><Link to='/insert'>Insert</Link></li>
             </ul>
           </div>
@@ -29,6 +32,9 @@ const Header = () => {
               <Link to='/library'>Library</Link>
 
 
+            </li>
+            <li>
+              <Link to='/places'>Places</Link>
             </li>
             <li><Link to='/insert'>Insert</Link></li>
           </ul>

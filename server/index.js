@@ -11,6 +11,7 @@ import cors from 'cors';
 const app = express();
 app.use(cors());
 
+
 app.use(express.json());
 
 dotenv.config({ path: ".env" });
@@ -21,6 +22,7 @@ connectDB();
 app.use(signIn);
 app.use(signUp);
 app.use(place);
+
 
 app.get('/', (req, res) => {
     res.send('hello there');
