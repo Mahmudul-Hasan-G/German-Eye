@@ -40,22 +40,6 @@ const Insert = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const placeToSend = new PlaceData();
-    // placeToSend.append('city', place.city);
-    // placeToSend.append('address', place.address);
-    // placeToSend.append('zipCode', place.zipCode);
-    // placeToSend.append('image', place.image);
-    // placeToSend.append('placeName', place.placeName);
-    // placeToSend.append('description', place.description);
-    // const formData = new FormData();
-    // formData.append('city', place.city);
-    // formData.append('address', place.address);
-    // formData.append('zipCode', place.zipCode);
-    // formData.append('image', place.image);
-    // formData.append('placeName', place.placeName);
-    // formData.append('description', place.description);
-
-
 
     try {
       console.log(place);
