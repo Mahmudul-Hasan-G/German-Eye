@@ -19,11 +19,22 @@ const Insert = () => {
     });
   };
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
+    const base64Image = await convertToBase64(file);
+
     setPlace({
       ...place,
-      image: file,
+      image: base64Image,
+    });
+  };
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
     });
   };
 
@@ -36,22 +47,19 @@ const Insert = () => {
     // placeToSend.append('image', place.image);
     // placeToSend.append('placeName', place.placeName);
     // placeToSend.append('description', place.description);
-    const formData = new FormData();
-    formData.append('city', place.city);
-    formData.append('address', place.address);
-    formData.append('zipCode', place.zipCode);
-    formData.append('image', place.image);
-    formData.append('placeName', place.placeName);
-    formData.append('description', place.description);
+    // const formData = new FormData();
+    // formData.append('city', place.city);
+    // formData.append('address', place.address);
+    // formData.append('zipCode', place.zipCode);
+    // formData.append('image', place.image);
+    // formData.append('placeName', place.placeName);
+    // formData.append('description', place.description);
+
 
 
     try {
-      await axios.post('http://localhost:5000/insert', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      // Handle success (data saved to MongoDB)
+      console.log(place);
+      await axios.post('http://localhost:5000/insert', place);
     } catch (error) {
       console.error('Error signing up:', error.response.data);
     }
