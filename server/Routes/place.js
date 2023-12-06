@@ -16,6 +16,7 @@ router.post('/insert', async (req, res) => {
         const place = new Place({ city, address, zipCode, image, placeName, description });
 
         await place.save();
+        res.send('success');
     }
     catch (err) {
 
