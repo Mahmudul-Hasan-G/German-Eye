@@ -3,33 +3,33 @@ import User from '../Model/UserSchema.js';
 
 const router = express.Router();
 
-router.post('/signin', async(req, res) => {
-    
+router.post('/signin', async (req, res) => {
 
-    const {email,password}= req.body;
-    try{
-const user= await User.findOne({email});
 
-if(!user){
-    return res.json("user not found");
-}
+    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({ email });
 
-//const isMatch= await compare(password, user.password);
+        if (!user) {
+            return res.json("User not found");
+        }
 
-if (password!== user.password){
-    return res.json("password is not correct");
-}
+        //const isMatch= await compare(password, user.password);
 
-else {
-    return res.json("user is logged in");
-}
+        if (password !== user.password) {
+            return res.json("Password is not correct");
+        }
+
+        else {
+            return res.json("User is logged in");
+        }
 
     }
-    catch(err){
+    catch (err) {
 
         res.json(err.message);
     }
-    
+
 })
 
 

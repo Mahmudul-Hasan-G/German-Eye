@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./Connection/Connection.js";
 import signIn from "./Routes/signIn.js";
 import signUp from "./Routes/signUp.js";
+import signOut from "./Routes/signOut.js";
 import place from "./Routes/place.js";
 import cors from 'cors';
 
@@ -12,7 +13,7 @@ const app = express();
 app.use(cors());
 
 
-app.use(express.json({limit: "50mb"}));
+app.use(express.json({ limit: "50mb" }));
 
 dotenv.config({ path: ".env" });
 
@@ -21,6 +22,7 @@ connectDB();
 
 app.use(signIn);
 app.use(signUp);
+app.use(signOut);
 app.use(place);
 
 

@@ -1,7 +1,23 @@
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useAuth } from '../Common/authContext.jsx';
 
 
 const Header = () => {
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const handleSignOut = async () => {
+    try {
+
+      const response = await axios.post('http://localhost:5000/signout');
+      console.log(response);
+      if (response.status === 200) {
+        setIsLoggedIn(false);
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+
+    }
+  };
   return (
     <>
       <div className="navbar bg-base-100">
@@ -13,12 +29,19 @@ const Header = () => {
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
               <li><Link to='/'>Home</Link></li>
               <li>
-                <Link to='/library'>Library</Link>
-              </li>
-              <li>
                 <Link to='/places'>Places</Link>
               </li>
-              <li><Link to='/insert'>Insert</Link></li>
+              {isLoggedIn ? (
+                <>
+                  <li>
+
+                    <Link to='/library'>Library</Link>
+                  </li>
+                  <li><Link to='/insert'>Insert</Link></li>
+                </>
+              ) : (
+                <></>
+              )}
             </ul>
           </div>
           <img className="w-20" src="vite.svg" alt="" />
@@ -29,18 +52,31 @@ const Header = () => {
             <li><Link to='/'>Home</Link></li>
             <li tabIndex={0}>
 
-              <Link to='/library'>Library</Link>
 
-
-            </li>
-            <li>
               <Link to='/places'>Places</Link>
+
             </li>
-            <li><Link to='/insert'>Insert</Link></li>
+            {isLoggedIn ? (
+              <>
+                <li>
+
+                  <Link to='/library'>Library</Link>
+                </li>
+                <li><Link to='/insert'>Insert</Link></li>
+              </>
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to='signin' className="btn">Sign in!</Link>
+          {isLoggedIn ? (
+            <>
+              <button onClick={handleSignOut} className="btn">Sign out</button>
+            </>
+          ) : (
+            <Link to='signin' className="btn">Sign in!</Link>
+          )}
         </div>
       </div>
 
