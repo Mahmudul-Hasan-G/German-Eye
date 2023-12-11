@@ -1,5 +1,6 @@
 import express from 'express';
 import User from '../Model/UserSchema.js';
+import bcrypt from 'bcryptjs';
 
 const router = express.Router();
 
@@ -14,9 +15,9 @@ router.post('/signin', async (req, res) => {
             return res.json("User not found");
         }
 
-        //const isMatch= await compare(password, user.password);
+        const isMatch = await bcrypt.compare(password, user.password);
 
-        if (password !== user.password) {
+        if (!isMatch) {
             return res.json("Password is not correct");
         }
 
