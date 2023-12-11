@@ -1,11 +1,13 @@
 
 
 const Library = () => {
-    return (
-        <div>
-        <h1 className="text-center text-4xl font-bold mb-6 text-yellow-500 border-b-2 border-red-500 rounded-full px-2 py-1">
+  return (
+    <div>
+      <h1 className="text-center text-4xl font-bold mb-6 text-yellow-500 border-b-2 border-red-500 rounded-full px-2 py-1">
         Library
       </h1>
+
+
       <div className="flex flex-auto justify-center">
     <div className="card w-96 bg-base-100 shadow-xl">
       <h2 className="text-3xl text-center font-bold mb-6">Philosophy</h2>

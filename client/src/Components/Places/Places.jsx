@@ -24,8 +24,8 @@ const Places = () => {
 
 
     return (
-        <div>
-            <h1>{places.length}</h1>
+        <div className="grid grid-cols-4 gap-6">
+
             {
                 places.map(place => <Place
                     key={place._id}
