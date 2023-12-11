@@ -2,6 +2,10 @@ import express from 'express';
 import User from '../Model/UserSchema.js';
 import bcrypt from 'bcrypt';
 
+import jwt from 'jsonwebtoken';
+
+
+
 const router = express.Router();
 
 router.post('/signin', async (req, res) => {
@@ -22,7 +26,10 @@ router.post('/signin', async (req, res) => {
         }
 
         else {
-            return res.json("User is logged in");
+
+            const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '30s' });
+            console.log(token);
+            res.status(200).json({ message: "User is logged in", token });
         }
 
     }
