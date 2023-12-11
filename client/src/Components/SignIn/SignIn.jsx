@@ -19,15 +19,17 @@ const SignIn = () => {
     try {
       const response = await axios.post('http://localhost:5000/signin', { email, password });
       const { data } = response;
+      const token = data.token;
+      localStorage.setItem('token', token);
       console.log(data);
       Swal.fire({
-        title: data,
+        title: data.message,
         imageUrl: "https://unsplash.it/400/200",
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Custom image"
       });
-      if (data === "User is logged in") {
+      if (data.message === "User is logged in") {
         setIsLoggedIn(true);
         navigate('/');
       }

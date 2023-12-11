@@ -11,6 +11,7 @@ const Header = () => {
       const response = await axios.post('http://localhost:5000/signout');
       console.log(response);
       if (response.status === 200) {
+        localStorage.removeItem('token');
         setIsLoggedIn(false);
       }
     } catch (error) {
