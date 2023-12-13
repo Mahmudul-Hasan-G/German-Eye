@@ -46,10 +46,10 @@ const Header = () => {
             </ul>
           </div>
           <img className="w-20" src="vite.svg" alt="" />
-          <p className="ml-4 text-5xl" style={{ fontFamily: "'Black Ops One', 'Bungee Shade', cursive", color: '#FF0000' }}>GERMAN  <span style={{ fontFamily: "'Black Ops One', 'Bungee Shade', cursive", color: '#FFCC00' }}>EYE</span></p>
+          <p className="ml-4 text-5xl" ><span style={{ fontFamily: "'Black Ops One', 'Bungee Shade', cursive", color: '#000000' }}>GER</span><span style={{ fontFamily: "'Black Ops One', 'Bungee Shade', cursive", color: '#FF0000' }}>MAN</span>  <span style={{ fontFamily: "'Black Ops One', 'Bungee Shade', cursive", color: '#FFCC00' }}>EYE</span></p>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="text-2xl font-bold menu menu-horizontal px-1">
             <li><Link to='/'>Home</Link></li>
             <li tabIndex={0}>
 
@@ -73,10 +73,10 @@ const Header = () => {
         <div className="navbar-end">
           {isLoggedIn ? (
             <>
-              <button onClick={handleSignOut} className="btn">Sign out</button>
+              <button onClick={handleSignOut} className="btn font-bold">Sign out</button>
             </>
           ) : (
-            <Link to='signin' className="btn">Sign in!</Link>
+            <Link to='signin' className="btn font-bold">Sign in!</Link>
           )}
         </div>
       </div>
