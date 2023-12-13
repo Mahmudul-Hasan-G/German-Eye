@@ -1,17 +1,41 @@
 /* eslint-disable react/prop-types */
 
 import { useNavigate } from "react-router-dom";
-
-
+import { useAuth } from '../Common/authContext.jsx';
+import Swal from 'sweetalert2';
 
 
 const Place = ({ place }) => {
+    const { isLoggedIn } = useAuth();
     const navigate = useNavigate();
     const { city, address, image } = place || {};
 
     const handelButton = () => {
-        navigate('/place-detail', { state: { place } })
-        console.log(place);
+        if (isLoggedIn) {
+            navigate('/place-detail', { state: { place } })
+        }
+        else {
+            Swal.fire({
+                title: "To see the detail You have to signIn",
+                showClass: {
+                    popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                  `
+                },
+                hideClass: {
+                    popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                  `
+                }
+
+            });
+            navigate('/signin');
+        }
+
     }
     return (
 

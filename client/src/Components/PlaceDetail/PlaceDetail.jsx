@@ -2,7 +2,9 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
+
 const PlaceDetail = () => {
+
     const location = useLocation();
     const navigate = useNavigate();
     const { place } = location.state || {};
@@ -11,10 +13,11 @@ const PlaceDetail = () => {
     const handleClick = () => {
         navigate(-1);
     }
+
     return (
         <div>
             <div className="card card-compact w-100% bg-base-100 shadow-xl">
-                <figure><img src={image} alt="Shoes" /></figure>
+                <figure><img src={image} alt="Photo" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{city}</h2>
                     <p>{address}</p>
