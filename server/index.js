@@ -5,6 +5,7 @@ import signIn from "./Routes/signIn.js";
 import signUp from "./Routes/signUp.js";
 import signOut from "./Routes/signOut.js";
 import place from "./Routes/place.js";
+import city from "./Routes/place.js";
 import cors from 'cors';
 
 
@@ -24,6 +25,7 @@ app.use(signIn);
 app.use(signUp);
 app.use(signOut);
 app.use(place);
+app.use(city);
 
 
 app.get('/', (req, res) => {
