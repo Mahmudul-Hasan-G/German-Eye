@@ -1,10 +1,13 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 const Insert = () => {
+  const navigate = useNavigate();
 
   const [place, setPlace] = useState({
+    userName: '',
     city: '',
     address: '',
     zipCode: '',
@@ -30,12 +33,13 @@ const Insert = () => {
           showConfirmButton: false,
           timer: 1500
         });
+        navigate('/places');
       }
 
     } catch (error) {
       console.error(error.message);
     }
-    //alert("Your work has been saved");
+    
 
   };
 
@@ -44,7 +48,7 @@ const Insert = () => {
       ...place,
       [e.target.name]: e.target.value,
     });
-    //alert("Your work has been saved");
+    
   };
 
   const handleImageUpload = async (e) => {
@@ -55,7 +59,7 @@ const Insert = () => {
       ...place,
       image: base64Image,
     });
-    //alert("Your work has been saved");
+    
   };
 
   const convertToBase64 = (file) => {
@@ -72,15 +76,29 @@ const Insert = () => {
 
   return (
 
-    <div>
+    <div className='bg-cover' style={{ backgroundImage : `url(/a2.jpg)`}}>
 
-
-      <h1 className="text-center text-4xl font-bold mb-6 text-yellow-500 border-b-2 border-red-500 rounded-full px-2 py-1">
+<div className='flex justify-center'>
+      <h1 className="text-center text-4xl font-bold mb-6 text-red-500 border-b-2 border-yellow-500 rounded-full px-4 py-4 mt-4">
         Where are we right now?
       </h1>
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col items-center justify-center h-screen border rounded shadow-lg p-6">
+      </div>
+      <form className='flex justify-center' onSubmit={handleSubmit}>
+        <div className="flex flex-col items-center justify-center h-screen border rounded shadow-lg p-6 w-2/3 mb-8 bg-base-200">
           <div className="container mx-auto p-4">
+          <div className="mb-4">
+              <h3 className="text-lg font-bold mb-2">User Name</h3>
+              <input
+                className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                type="text"
+                name="userName"
+                value={place.userName}
+                onChange={handleInputChange}
+                placeholder="Enter name of the city you're visiting"
+              />
+            </div>
+
+
             <div className="mb-4">
               <h3 className="text-lg font-bold mb-2">City</h3>
               <input
@@ -155,7 +173,7 @@ const Insert = () => {
           </div>
 
           <button
-            className="bg-red-500 text-white font-bold py-3 px-6 rounded mt-4 focus:outline-none focus:shadow-outline"
+            className="bg-red-500 text-white font-bold py-3 px-8 rounded mt-4 focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Insert

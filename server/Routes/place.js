@@ -8,12 +8,12 @@ const router = express.Router();
 
 router.post('/insert', async (req, res) => {
 
-    const { city, address, zipCode, image, placeName, description } = req.body;
+    const {userName, city, address, zipCode, image, placeName, description } = req.body;
 
 
     try {
         console.log(req.body);
-        const place = new Place({ city, address, zipCode, image, placeName, description });
+        const place = new Place({ userName, city, address, zipCode, image, placeName, description });
 
         await place.save();
 
