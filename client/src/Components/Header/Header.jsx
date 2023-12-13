@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useAuth } from '../Common/authContext.jsx';
 
 
 const Header = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
 
       const response = await axios.post('http://localhost:5000/signout');
-      console.log(response);
+      navigate('/');
       if (response.status === 200) {
         localStorage.removeItem('token');
         setIsLoggedIn(false);
