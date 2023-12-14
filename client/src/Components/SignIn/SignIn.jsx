@@ -71,7 +71,7 @@ const SignIn = () => {
                 </div>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary text-2xl">Login</button>
+                <button className="btn btn-accent text-2xl">Login</button>
               </div>
             </form>
             <p className="ml-8 mb-4">If it`s your first time, <Link className="text-purple-900 font-bold hover:bg-purple-200 p-2" to="/signup">Sign Up!</Link></p>
