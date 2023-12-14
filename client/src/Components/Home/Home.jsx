@@ -9,25 +9,25 @@ import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
-  const [places, setPlaces] = useState ([]);
+  const [places, setPlaces] = useState([]);
   const navigate = useNavigate();
 
-const handleSubmit= async (e) => {
-  e.preventDefault();
-  const city = e.target.cityName.value;
-  console.log(city);
-  try {
-  const response = await axios.get('http://localhost:5000/city', { params: { city } });
-  console.log(response.data);
-  setPlaces(response.data);
-  navigate('/scity', { state: {places: response.data} });
-  console.log(places);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const city = e.target.cityName.value;
+    console.log(city);
+    try {
+      const response = await axios.get('http://localhost:5000/city', { params: { city } });
+      console.log(response.data);
+      setPlaces(response.data);
+      navigate('/scity', { state: { places: response.data } });
+      console.log(places);
+    }
+    catch (error) {
+      console.error(error.message);
+    }
+
   }
-  catch (error) {
-    console.error(error.message);
-  }
-  
-}
 
   return (
     <div>
@@ -40,9 +40,9 @@ const handleSubmit= async (e) => {
             <h1 className="mb-5 text-cyan-400 text-6xl font-bold">Bring your Journey to US!</h1>
             <p className="mb-5 font-bold text-4xl text-cyan-400">Let us see through your EYES</p>
 
-<form onSubmit={handleSubmit}>
-            <input type="text" name="cityName" placeholder="Write the City Name " className="input input-bordered input-accent w-full max-w-xs mb-4" />
-            <button type="submit" className="btn btn-accent text-3xl">Get Started</button>
+            <form onSubmit={handleSubmit}>
+              <input type="text" name="cityName" placeholder="Write the City Name " className="input input-bordered input-accent w-full max-w-xs mb-4" />
+              <button type="submit" className="btn btn-accent text-3xl">Get Started</button>
             </form>
 
 
