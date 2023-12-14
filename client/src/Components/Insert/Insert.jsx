@@ -173,7 +173,7 @@ const Insert = () => {
           </div>
 
           <button
-            className="bg-red-500 text-white font-bold py-3 px-8 rounded mt-4 focus:outline-none focus:shadow-outline"
+            className="btn btn-accent font-bold text-xl py-3 px-8 rounded mt-4 focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Insert

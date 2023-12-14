@@ -45,7 +45,7 @@ const Place = ({ place }) => {
                 <h2 className="card-title">{city}</h2>
                 <p>{address}</p>
                 <div className="card-actions">
-                    <button onClick={handelButton} className="btn btn-primary">To Know more</button>
+                    <button onClick={handelButton} className="btn btn-accent">To Know more</button>
                 </div>
             </div>
 

@@ -41,7 +41,8 @@ router.get(('/places'), async (req, res) => {
 router.get(('/city'), async (req, res) => {
     try {
         
-        const city = req.body.city;
+        const city = req.query.city;
+        console.log(city);
         const places = await Place.find({ city: city });
        
         res.json(places);

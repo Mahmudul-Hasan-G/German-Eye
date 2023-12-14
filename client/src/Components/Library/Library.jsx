@@ -23,8 +23,7 @@ const Library = () => {
         <p>A small bio of what the books talk about</p>
         <div className="card-actions">
           <button
-            className="btn btn-primary"
-            style={{ backgroundColor: 'red', color: 'white' }}
+            className="btn btn-accent"
           >
             Read me now!
           </button>
@@ -46,8 +45,7 @@ const Library = () => {
         <p>A small bio of what the book talks about</p>
         <div className="card-actions">
           <button
-            className="btn btn-primary"
-            style={{ backgroundColor: 'red', color: 'white' }}
+            className="btn btn-accent"
           >
             Read me now!
           </button>
@@ -69,8 +67,7 @@ const Library = () => {
         <p>A small bio of what the book talks about</p>
         <div className="card-actions">
           <button
-            className="btn btn-primary"
-            style={{ backgroundColor: 'red', color: 'white' }}
+            className="btn btn-accent"
           >
             Read me now!
           </button>
