@@ -7,13 +7,17 @@ const SelectedCity = () => {
     const places = location.state.places;
     console.log(places);
     return (
-        <div>
+        <div className="grid grid-cols-5 gap-4 my-12">
+            <div></div>
+        <div className="grid grid-cols-3 col-span-3 gap-4">
             {
                 places.map(place => <Place
                 key = {place._id}
                 place={place}
                  />)
             }
+        </div>
+        <div></div>
         </div>
     );
 };
