@@ -25,7 +25,7 @@ const PlaceDetail = () => {
                     <h1>{placeName}</h1>
                     <p>{description}</p>
                     <div className="card-actions justify-end">
-                        <button onClick={handleClick} className="btn btn-primary px-10">Go back</button>
+                        <button onClick={handleClick} className="btn btn-accent px-10">Go back</button>
                     </div>
                 </div>
             </div>

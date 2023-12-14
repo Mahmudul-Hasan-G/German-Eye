@@ -18,6 +18,8 @@ import SignUp from './Components/SignUp/SignUp.jsx';
 import Places from './Components/Places/Places.jsx';
 import PlaceDetail from './Components/PlaceDetail/PlaceDetail.jsx';
 import SelectedCity from './Components/SelectedCity/SelectedCity.jsx';
+import AboutUs from './Components/AboutUs/AboutUs.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -56,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "/scity",
         element: <SelectedCity />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       }
     ]
   },
