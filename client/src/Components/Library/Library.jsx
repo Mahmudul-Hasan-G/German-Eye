@@ -1,9 +1,48 @@
-
+import { useState } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf'; 
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css'; // Import the AnnotationLayer styles
+import 'react-pdf/dist/esm/Page/TextLayer.css'; 
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`; 
 
 const Library = () => {
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  } 
+  const nextPage = () => {
+    if (pageNumber < numPages) {
+      setPageNumber(pageNumber + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (pageNumber > 1) {
+      setPageNumber(pageNumber - 1);
+    }
+  }; 
+
   return (
+
     <div>
-      <h1 className="text-center text-4xl font-bold mb-6 text-yellow-500 border-b-2 border-red-500 rounded-full px-2 py-1">
+<Document
+        file="/public/20000-Leagues-Under-the-Sea.pdf" // Replace with your PDF file path or URL
+        onLoadSuccess={onDocumentLoadSuccess}
+      >
+        <Page pageNumber={pageNumber} />
+      </Document>
+      <p>Page {pageNumber} of {numPages}</p> 
+      <div>
+        <button onClick={prevPage} disabled={pageNumber <= 1}>
+          Previous
+        </button>
+        <button onClick={nextPage} disabled={pageNumber >= numPages}>
+          Next
+        </button>
+      </div> 
+
+      {/* <h1 className="text-center text-4xl font-bold mb-6 text-yellow-500 border-b-2 border-red-500 rounded-full px-2 py-1">
         Library
       </h1>
 
@@ -74,7 +113,7 @@ const Library = () => {
         </div>
       </div>
     </div>
-  </div>
+  </div> */}
   </div>
 );
     };
