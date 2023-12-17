@@ -1,6 +1,10 @@
 
 
 const AboutUs = () => {
+
+
+  
+
     return (
       <div className='bg-center h-screen text-white flex justify-center' style={{backgroundImage : `url(/about-us-background.png)` }}>
           <div className="grid grid-cols-3 gap-2">
