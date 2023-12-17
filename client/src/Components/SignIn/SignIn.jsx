@@ -8,7 +8,7 @@ import { useAuth } from '../Common/authContext.jsx';
 const SignIn = () => {
   const navigate = useNavigate();
 
-  const { setIsLoggedIn } = useAuth();
+  const { setIsLoggedIn, setUsername } = useAuth();
 
 
   const handleSignIn = async (e) => {
@@ -23,6 +23,7 @@ const SignIn = () => {
       const token = data.token;
       localStorage.setItem('token', token);
       console.log(data);
+
       Swal.fire({
         title: data.message,
         imageUrl: "https://unsplash.it/400/200",
@@ -32,6 +33,7 @@ const SignIn = () => {
       });
       if (data.message === "User is logged in") {
         setIsLoggedIn(true);
+        setUsername(email);
         navigate('/');
       }
 

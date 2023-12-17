@@ -6,6 +6,7 @@ import m1 from '/m1.jpg';
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 
 const Home = () => {
@@ -16,15 +17,58 @@ const Home = () => {
     e.preventDefault();
     const city = e.target.cityName.value;
     console.log(city);
-    try {
-      const response = await axios.get('http://localhost:5000/city', { params: { city } });
-      console.log(response.data);
-      setPlaces(response.data);
-      navigate('/scity', { state: { places: response.data } });
-      console.log(places);
+    if (city) {
+      try {
+        const response = await axios.get('http://localhost:5000/city', { params: { city } });
+        console.log(response.data);
+        console.log(response.data.length);
+        if (response.data.length != 0) {
+          setPlaces(response.data);
+          navigate('/scity', { state: { places: response.data } });
+          console.log(places);
+        }
+        else {
+          Swal.fire({
+            title: `Sorry still we have no data for ${city} ! Please try another German City Name`,
+            showClass: {
+              popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+            },
+            hideClass: {
+              popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+            }
+          });
+        }
+      }
+      catch (error) {
+        console.error(error.message);
+      }
     }
-    catch (error) {
-      console.error(error.message);
+    else {
+      Swal.fire({
+        title: `Please Enter A German City Name !`,
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
     }
 
   }
