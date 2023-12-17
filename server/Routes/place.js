@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post('/insert', async (req, res) => {
 
-    const {userName, city, address, zipCode, image, placeName, description } = req.body;
+    const { userName, city, address, zipCode, image, placeName, description } = req.body;
 
 
     try {
@@ -40,11 +40,12 @@ router.get(('/places'), async (req, res) => {
 
 router.get(('/city'), async (req, res) => {
     try {
-        
+
         const city = req.query.city;
         console.log(city);
-        const places = await Place.find({ city: city });
-       
+        const regexCity = new RegExp(city, 'i');
+        const places = await Place.find({ city: { $regex: regexCity } });
+
         res.json(places);
     } catch (err) {
         console.error(err.message);

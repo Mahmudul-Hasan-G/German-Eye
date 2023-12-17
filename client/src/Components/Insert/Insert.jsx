@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { useAuth } from '../Common/authContext.jsx';
+
 
 const Insert = () => {
+  const { username } = useAuth();
   const navigate = useNavigate();
 
   const [place, setPlace] = useState({
@@ -39,16 +42,17 @@ const Insert = () => {
     } catch (error) {
       console.error(error.message);
     }
-    
+
 
   };
 
   const handleInputChange = (e) => {
     setPlace({
       ...place,
+      userName: username,
       [e.target.name]: e.target.value,
     });
-    
+
   };
 
   const handleImageUpload = async (e) => {
@@ -59,7 +63,7 @@ const Insert = () => {
       ...place,
       image: base64Image,
     });
-    
+
   };
 
   const convertToBase64 = (file) => {
@@ -76,17 +80,17 @@ const Insert = () => {
 
   return (
 
-    <div className='bg-cover' style={{ backgroundImage : `url(/a2.jpg)`}}>
+    <div className='bg-cover' style={{ backgroundImage: `url(/a2.jpg)` }}>
 
-<div className='flex justify-center'>
-      <h1 className="text-center text-4xl font-bold mb-6 text-red-500 border-b-2 border-yellow-500 rounded-full px-4 py-4 mt-4">
-        Where are we right now?
-      </h1>
+      <div className='flex justify-center'>
+        <h1 className="text-center text-4xl font-bold mb-6 text-red-500 border-b-2 border-yellow-500 rounded-full px-4 py-4 mt-4">
+          Where are we right now?
+        </h1>
       </div>
       <form className='flex justify-center' onSubmit={handleSubmit}>
         <div className="flex flex-col items-center justify-center h-screen border rounded shadow-lg p-6 w-2/3 mb-8 bg-base-200">
           <div className="container mx-auto p-4">
-          <div className="mb-4">
+            {/* <div className="mb-4">
               <h3 className="text-lg font-bold mb-2">User Name</h3>
               <input
                 className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -96,7 +100,7 @@ const Insert = () => {
                 onChange={handleInputChange}
                 placeholder="Enter name of the city you're visiting"
               />
-            </div>
+            </div> */}
 
 
             <div className="mb-4">
