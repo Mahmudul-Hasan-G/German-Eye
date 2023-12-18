@@ -15,19 +15,21 @@ const PlaceDetail = () => {
     }
 
     return (
-        <div>
-            <div className="card card-compact w-100% bg-base-100 shadow-xl">
-                <figure><img src={image} alt="Photo" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">{city}</h2>
+        <div className="bg-red-500 my-0 mx-0">
+            <div className="">
+            <div className="bg-white grid grid-cols-2 gap-4 justify-items-center mt-20 mx-6 mb-6 ">
+                <div className="">
+                    <h2 className="text-3xl">{city}</h2>
                     <p>{address}</p>
                     <p>{zipCode}</p>
                     <h1>{placeName}</h1>
                     <p>{description}</p>
-                    <div className="card-actions justify-end">
                         <button onClick={handleClick} className="btn btn-accent px-10">Go back</button>
-                    </div>
                 </div>
+                <div className="">
+                <img src={image} alt="Photo" />
+                </div>
+            </div>
             </div>
 
         </div>
@@ -35,3 +37,7 @@ const PlaceDetail = () => {
 };
 
 export default PlaceDetail;
+
+
+
+
