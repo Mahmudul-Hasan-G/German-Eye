@@ -76,7 +76,8 @@ const Home = () => {
   return (
     <div>
       <Marquee className="text-white bg-gradient-to-r from-blue-400 to-green-400" speed={20} direction="right" gradient={true} gradientColor={[239, 23, 23]}>
-        <h1 className="text-6xl mb-4 p-2">Cultural places and Weather Updates</h1>
+        <h1 className="text-6xl mb-4 p-2">Your Life, Your Memories, Our Place.
+</h1>
       </Marquee>
       <div className="h-screen w-full bg-cover bg-center lg:flex items-center justify-center gap-x-36" style={{ backgroundImage: `url(/lake.jpg)` }}>
         <div>
@@ -88,9 +89,6 @@ const Home = () => {
               <input type="text" name="cityName" placeholder="Write the City Name " className="input input-bordered input-accent w-full max-w-xs mb-4" />
               <button type="submit" className="btn btn-accent text-3xl">Get Started</button>
             </form>
-
-
-
           </div>
         </div>
         <div className="carousel lg:w-1/2 h-2/3 rounded-full">

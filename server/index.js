@@ -7,7 +7,7 @@ import signOut from "./Routes/signOut.js";
 import place from "./Routes/place.js";
 import city from "./Routes/place.js";
 import cors from 'cors';
-
+import mydata from "./Routes/place.js";
 
 
 const app = express();
@@ -26,7 +26,7 @@ app.use(signUp);
 app.use(signOut);
 app.use(place);
 app.use(city);
-
+app.use(mydata);
 
 app.get('/', (req, res) => {
     res.send('hello there');

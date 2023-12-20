@@ -1,11 +1,35 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useAuth } from '../Common/authContext.jsx';
+import { useState } from "react";
 
 
 const Header = () => {
+
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const {username} = useAuth();
+const [myPlaces, setMyPlaces] = useState([]);
+
+  const handleMyData = async ()=> {
+    console.log(username);
+    try {
+      const response = await axios.get ('http://localhost:5000/mydata', {params:{username}});
+      console.log(response);
+      if (response.data.length != 0) {
+        setMyPlaces(response.data);
+        console.log(myPlaces);
+
+        navigate('/myData', {state:{places:response.data}});
+        console.log(response.data);
+      }
+    }
+    catch (error) {
+      console.error('Error in fetching places:', error);
+    }
+  }
+
+
   const handleSignOut = async () => {
     try {
 
@@ -40,6 +64,7 @@ const Header = () => {
                     <Link to='/library'>Library</Link>
                   </li>
                   <li><Link to='/insert'>Insert</Link></li>
+                  <li><button onClick={handleMyData}>My Data</button></li>
                 </>
               ) : (
                 <></>
@@ -65,6 +90,7 @@ const Header = () => {
                   <Link to='/library'>Library</Link>
                 </li>
                 <li><Link to='/insert'>Insert</Link></li>
+                <li><button onClick={handleMyData}>My Data</button></li>
               </>
             ) : (
               <></>
