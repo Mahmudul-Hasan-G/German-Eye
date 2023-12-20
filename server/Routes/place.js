@@ -53,5 +53,19 @@ router.get(('/city'), async (req, res) => {
     }
 })
 
+router.get(('/mydata'), async (req, res) => {
+    try {
+        const userName = req.query.username;
+        console.log(userName);
+        const mydata = await Place.find({
+            userName: userName
+         });
+         res.json(mydata);
+        console.log(mydata.length);    
+    } catch (err) {
+        console.error(err.message);
+}
+})
+
 export default router;
 

@@ -19,6 +19,7 @@ import Places from './Components/Places/Places.jsx';
 import PlaceDetail from './Components/PlaceDetail/PlaceDetail.jsx';
 import SelectedCity from './Components/SelectedCity/SelectedCity.jsx';
 import AboutUs from './Components/AboutUs/AboutUs.jsx';
+import MyData from './Components/MyData/MyData.jsx';
 
 
 
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "/myData",
+        element: <MyData />,
       }
     ]
   },

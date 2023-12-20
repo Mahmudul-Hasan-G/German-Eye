@@ -24,7 +24,7 @@ const Places = () => {
 
 
     return (
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-4 gap-6 text-xl">
 
             {
                 places.map(place => <Place
