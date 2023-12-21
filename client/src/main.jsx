@@ -20,7 +20,7 @@ import PlaceDetail from './Components/PlaceDetail/PlaceDetail.jsx';
 import SelectedCity from './Components/SelectedCity/SelectedCity.jsx';
 import AboutUs from './Components/AboutUs/AboutUs.jsx';
 import MyData from './Components/MyData/MyData.jsx';
-
+import Book from './Components/Common/Book';
 
 
 const router = createBrowserRouter([
@@ -67,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "/myData",
         element: <MyData />,
+      },
+      {
+        path: "/book",
+        element: <Book />,
       }
     ]
   },
