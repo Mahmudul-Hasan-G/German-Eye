@@ -9,7 +9,7 @@ const MyData = () => {
     const places = location.state.places;
     console.log(places);
     return (
-        <div>
+        <div className="grid grid-cols-4 gap-6 text-xl">
             { 
                 places.map (place => <Place key={place._id} place={place}/>)
             }
