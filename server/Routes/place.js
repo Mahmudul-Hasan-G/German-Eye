@@ -1,5 +1,6 @@
 import express from "express";
 import Place from "../Model/PlaceSchema.js";
+import CheckJwt from "../Middleware/Checkjwt.js";
 
 
 
@@ -53,19 +54,64 @@ router.get(('/city'), async (req, res) => {
     }
 })
 
-router.get(('/mydata'), async (req, res) => {
+router.get(('/mydata'), CheckJwt, async (req, res) => {
     try {
         const userName = req.query.username;
         console.log(userName);
         const mydata = await Place.find({
             userName: userName
-         });
-         res.json(mydata);
-        console.log(mydata.length);    
+        });
+        res.json(mydata);
+        console.log(mydata.length);
     } catch (err) {
         console.error(err.message);
-}
+    }
 })
+
+router.get(('/placeByIdG'), async (req, res) => {
+    try {
+        const placeId = req.query._id;
+        console.log(placeId);
+        const placeDataById = await Place.findById({
+            _id: placeId
+        });
+        if (!placeDataById) {
+            return res.status(404).json({ message: 'Place not found' });
+        }
+        const likedByUser = placeDataById.likes.some(like => like.username === req.query.username);
+        console.log(likedByUser);
+        return res.json({ likedByUser });
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+router.post(('/placeByIdP'), async (req, res) => {
+    try {
+        const placeId = req.body._id;
+        console.log(placeId);
+        const placeDataById = await Place.findById({
+            _id: placeId
+        });
+        if (!placeDataById) {
+            return res.status(404).json({ message: 'Place not found' });
+        }
+        const likedByUser = placeDataById.likes.some(like => like.username === req.query.username);
+        if (!likedByUser) {
+            placeDataById.likes.push({ username: req.body.username });
+            await placeDataById.save();
+            return res.status(201).json({ message: 'Place liked!' });
+        }
+
+
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+});
+
+
+
 
 export default router;
 

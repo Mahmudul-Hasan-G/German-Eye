@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const placeSchema = new mongoose.Schema({
-    userName:{
+    userName: {
         type: String
     },
     city: {
@@ -22,6 +22,9 @@ const placeSchema = new mongoose.Schema({
     description: {
         type: String
     },
+    likes: [{
+        username: String
+    }],
 });
 
 const Place = mongoose.model('Place', placeSchema);

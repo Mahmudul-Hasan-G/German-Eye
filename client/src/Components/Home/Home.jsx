@@ -77,7 +77,7 @@ const Home = () => {
     <div>
       <Marquee className="text-white bg-gradient-to-r from-blue-400 to-green-400" speed={20} direction="right" gradient={true} gradientColor={[239, 23, 23]}>
         <h1 className="text-6xl mb-4 p-2">Your Life, Your Memories, Our Place.
-</h1>
+        </h1>
       </Marquee>
       <div className="h-screen w-full bg-cover bg-center lg:flex items-center justify-center gap-x-36" style={{ backgroundImage: `url(/lake.jpg)` }}>
         <div>
@@ -86,7 +86,22 @@ const Home = () => {
             <p className="mb-5 font-bold text-4xl text-cyan-400">Let us see through your EYES</p>
 
             <form onSubmit={handleSubmit}>
-              <input type="text" name="cityName" placeholder="Write the City Name " className="input input-bordered input-accent w-full max-w-xs mb-4" />
+              <input type="text" name="cityName" list="cityOptions" placeholder="Write the City Name " className="input input-bordered input-accent w-full max-w-xs mb-4" />
+
+              <datalist id="cityOptions">
+                <option value="Berlin" />
+                <option value="Duisburg" />
+                <option value="Stuttgart" />
+                <option value="Munich" />
+                <option value="Frankfurt" />
+                <option value="Cologne" />
+                <option value="Hamburg" />
+                <option value="Leipzig" />
+                <option value="Nuremberg" />
+                <option value="Bremen" />
+                <option value="Hanover" />
+                <option value="Mannheim" />
+              </datalist>
               <button type="submit" className="btn btn-accent text-3xl">Get Started</button>
             </form>
           </div>
