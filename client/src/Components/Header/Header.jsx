@@ -8,19 +8,21 @@ const Header = () => {
 
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
-  const {username} = useAuth();
-const [myPlaces, setMyPlaces] = useState([]);
+  const { username } = useAuth();
+  const [myPlaces, setMyPlaces] = useState([]);
 
-  const handleMyData = async ()=> {
-    console.log(username);
+  const handleMyData = async () => {
+
     try {
-      const response = await axios.get ('http://localhost:5000/mydata', {params:{username}});
+      const token = localStorage.getItem('token');
+      const response = await axios.get('http://localhost:5000/mydata', { params: { username }, headers: { Authorization: token }, });
       console.log(response);
       if (response.data.length != 0) {
         setMyPlaces(response.data);
+
         console.log(myPlaces);
 
-        navigate('/myData', {state:{places:response.data}});
+        navigate('/myData', { state: { places: response.data } });
         console.log(response.data);
       }
     }
