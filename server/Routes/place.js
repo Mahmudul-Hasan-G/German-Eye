@@ -76,11 +76,11 @@ router.get(('/placeByIdG'), async (req, res) => {
             _id: placeId
         });
         if (!placeDataById) {
-            return res.status(404).json({ message: 'Place not found' });
+            res.status(404).json({ message: 'Place not found' });
         }
         const likedByUser = placeDataById.likes.some(like => like.username === req.query.username);
         console.log(likedByUser);
-        return res.json({ likedByUser });
+        res.json({ likedByUser });
 
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -95,18 +95,18 @@ router.post(('/placeByIdP'), async (req, res) => {
             _id: placeId
         });
         if (!placeDataById) {
-            return res.status(404).json({ message: 'Place not found' });
+            res.status(404).json({ message: 'Place not found' });
         }
         const likedByUser = placeDataById.likes.some(like => like.username === req.query.username);
         if (!likedByUser) {
             placeDataById.likes.push({ username: req.body.username });
             await placeDataById.save();
-            return res.status(201).json({ message: 'Place liked!' });
+            res.status(201).json({ message: 'Place liked!' });
         }
 
 
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
 });
 
