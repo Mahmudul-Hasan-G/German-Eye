@@ -8,8 +8,8 @@ import place from "./Routes/place.js";
 import city from "./Routes/place.js";
 import cors from 'cors';
 import mydata from "./Routes/place.js";
-import placeByIdG from "./Routes/place.js";
-import placeByIdP from "./Routes/place.js";
+import placeById from "./Routes/place.js";
+
 
 const app = express();
 app.use(cors());
@@ -28,8 +28,8 @@ app.use(signOut);
 app.use(place);
 app.use(city);
 app.use(mydata);
-app.use(placeByIdG);
-app.use(placeByIdP);
+app.use(placeById);
+
 
 app.get('/', (req, res) => {
     res.send('hello there');

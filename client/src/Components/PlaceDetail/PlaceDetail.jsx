@@ -21,21 +21,14 @@ const PlaceDetail = () => {
 
 
     const checkIfLiked = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/placeByIdG', { params: { username, _id } });
-            console.log(response);
-            const likedByUser = await response.data.likedByUser;
-            console.log(likedByUser);
-            setIsLiked(likedByUser);
-        } catch (error) {
-            console.error('Error checking if liked:', error);
-        }
+        const response = likes.some(like => like.username === username);
+        setIsLiked(response);
     };
 
     const handleLikes = async () => {
         try {
             if (isLiked === false) {
-                await axios.post('http://localhost:5000/placeByIdP', { username, _id });
+                await axios.post('http://localhost:5000/placeById', { username, _id });
 
                 setIsLiked(true);
 
