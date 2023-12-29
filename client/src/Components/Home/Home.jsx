@@ -3,15 +3,39 @@ import b1 from '/b1.jpg';
 import d1 from '/d1.avif';
 import s1 from '/s1.jpg';
 import m1 from '/m1.jpg';
-import { useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+//import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import { useAuth } from "../Common/authContext";
+import axios from 'axios';
 
 
 const Home = () => {
-  const [places, setPlaces] = useState([]);
+  const {allPlaces, setAllPlaces} = useAuth();
+  const {selPlaces, setSelPlaces} = useAuth();
   const navigate = useNavigate();
+  
+
+//   useEffect(() => {
+//     const getData = async () => {
+//         try {
+//             const response = await axios.get('http://localhost:5000/places');
+//             console.log(response.data);
+//             setAllPlaces(response.data);
+
+//         } catch (error) {
+//             console.error(error.message);
+//         }
+//     };
+//     getData();
+// }, [])
+
+useEffect(() => {
+  axios.get('http://localhost:5000/places')
+  .then(allPlaces => setAllPlaces(allPlaces.data))
+  .catch(err => console.log(err))
+}, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,13 +43,15 @@ const Home = () => {
     console.log(city);
     if (city) {
       try {
-        const response = await axios.get('http://localhost:5000/city', { params: { city } });
-        console.log(response.data);
-        console.log(response.data.length);
-        if (response.data.length != 0) {
-          setPlaces(response.data);
-          navigate('/scity', { state: { places: response.data } });
-          console.log(places);
+        console.log(allPlaces);
+        const response =  allPlaces.filter(place => place.city.toLowerCase() === city.toLowerCase());
+        //const response = await axios.get('http://localhost:5000/city', { params: { city } });
+        console.log(response);
+        console.log(response.length);
+        if (response.length != 0) {
+          setSelPlaces(response);
+          navigate('/scity', { state: { places: response } });
+          console.log(selPlaces);
         }
         else {
           Swal.fire({
