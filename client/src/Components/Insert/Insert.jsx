@@ -17,6 +17,7 @@ const Insert = () => {
     image: null,
     placeName: '',
     description: '',
+    likes: null
   });
 
 

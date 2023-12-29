@@ -17,9 +17,7 @@ import SignIn from './Components/SignIn/SignIn.jsx';
 import SignUp from './Components/SignUp/SignUp.jsx';
 import Places from './Components/Places/Places.jsx';
 import PlaceDetail from './Components/PlaceDetail/PlaceDetail.jsx';
-import SelectedCity from './Components/SelectedCity/SelectedCity.jsx';
 import AboutUs from './Components/AboutUs/AboutUs.jsx';
-import MyData from './Components/MyData/MyData.jsx';
 import Book from './Components/Common/Book';
 
 
@@ -57,16 +55,8 @@ const router = createBrowserRouter([
         element: <PlaceDetail />,
       },
       {
-        path: "/scity",
-        element: <SelectedCity />,
-      },
-      {
         path: "/about-us",
         element: <AboutUs />,
-      },
-      {
-        path: "/myData",
-        element: <MyData />,
       },
       {
         path: "/book",

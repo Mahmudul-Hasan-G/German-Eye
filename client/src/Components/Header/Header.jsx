@@ -1,15 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useAuth } from '../Common/authContext.jsx';
-import { useState } from "react";
+
 
 
 const Header = () => {
-
+  const { allPlaces, setAllPlaces } = useAuth();
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
   const { username } = useAuth();
-  const [myPlaces, setMyPlaces] = useState([]);
+
+
+  const handleAllData = async () => {
+
+    try {
+      const response = await axios.get('http://localhost:5000/places');
+      console.log(response.data);
+      setAllPlaces(response.data);
+      navigate('/places');
+    } catch (error) {
+      console.error(error.message);
+    }
+
+  }
 
   const handleMyData = async () => {
 
@@ -18,11 +31,11 @@ const Header = () => {
       const response = await axios.get('http://localhost:5000/mydata', { params: { username }, headers: { Authorization: token }, });
       console.log(response);
       if (response.data.length != 0) {
-        setMyPlaces(response.data);
+        setAllPlaces(response.data);
 
-        console.log(myPlaces);
+        console.log(allPlaces);
 
-        navigate('/myData', { state: { places: response.data } });
+        navigate('/places');
         console.log(response.data);
       }
     }
@@ -57,7 +70,7 @@ const Header = () => {
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
               <li><Link to='/'>Home</Link></li>
               <li>
-                <Link to='/places'>Places</Link>
+                <Link onClick={handleAllData} >Places</Link>
               </li>
               {isLoggedIn ? (
                 <>
@@ -82,7 +95,7 @@ const Header = () => {
             <li tabIndex={0}>
 
 
-              <Link to='/places'>Places</Link>
+              <Link onClick={handleAllData} >Places</Link>
 
             </li>
             {isLoggedIn ? (

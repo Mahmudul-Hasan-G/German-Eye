@@ -14,7 +14,7 @@ router.post('/insert', async (req, res) => {
 
     try {
         console.log(req.body);
-        const place = new Place({ userName, city, address, zipCode, image, placeName, description });
+        const place = new Place({ userName, city, address, zipCode, image, placeName, description, likes });
 
         await place.save();
 
@@ -68,7 +68,7 @@ router.get(('/mydata'), CheckJwt, async (req, res) => {
     }
 })
 
-router.get(('/placeByIdG'), async (req, res) => {
+router.get(('/placeById'), async (req, res) => {
     try {
         const placeId = req.query._id;
         console.log(placeId);
@@ -87,7 +87,7 @@ router.get(('/placeByIdG'), async (req, res) => {
     }
 });
 
-router.post(('/placeByIdP'), async (req, res) => {
+router.post(('/placeById'), async (req, res) => {
     try {
         const placeId = req.body._id;
         console.log(placeId);
