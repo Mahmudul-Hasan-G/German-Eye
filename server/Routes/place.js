@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post('/insert', async (req, res) => {
 
-    const { userName, city, address, zipCode, image, placeName, description } = req.body;
+    const { userName, city, address, zipCode, image, placeName, description, likes } = req.body;
 
 
     try {
