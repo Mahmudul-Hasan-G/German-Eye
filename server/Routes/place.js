@@ -68,7 +68,7 @@ router.get(('/mydata'), CheckJwt, async (req, res) => {
     }
 })
 
-router.get(('/placeById'), async (req, res) => {
+router.get(('/placeByIdG'), async (req, res) => {
     try {
         const placeId = req.query._id;
         console.log(placeId);
@@ -78,9 +78,11 @@ router.get(('/placeById'), async (req, res) => {
         if (!placeDataById) {
             res.status(404).json({ message: 'Place not found' });
         }
-        const likedByUser = placeDataById.likes.some(like => like.username === req.query.username);
-        console.log(likedByUser);
-        res.json({ likedByUser });
+        // const likedByUser = placeDataById.likes.some(like => like.username === req.query.username);
+        // console.log(likedByUser);
+        // res.json({ likedByUser });
+        console.log(placeDataById.likes.length);
+        res.json(placeDataById.likes.length);
 
     } catch (error) {
         res.status(500).json({ message: error.message });
