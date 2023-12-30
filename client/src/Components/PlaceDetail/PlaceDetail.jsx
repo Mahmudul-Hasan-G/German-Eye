@@ -6,6 +6,7 @@ import axios from "axios";
 
 
 const PlaceDetail = () => {
+    const [nLikes, setNLikes] = useState();
     const { username } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
@@ -21,8 +22,10 @@ const PlaceDetail = () => {
 
 
     const checkIfLiked = async () => {
-        const response = likes.some(like => like.username === username);
-        setIsLiked(response);
+        const response1 = likes.some(like => like.username === username);
+        setIsLiked(response1);
+        setNLikes(likes.length);
+
     };
 
     const handleLikes = async () => {
@@ -31,8 +34,9 @@ const PlaceDetail = () => {
                 await axios.post('http://localhost:5000/placeById', { username, _id });
 
                 setIsLiked(true);
-
-
+                const response = await axios.get('http://localhost:5000/placeById', { params: { _id } });
+                setNLikes(response.data);
+                console.log(response.data);
             } else {
                 console.log('Already liked!');
             }
@@ -59,7 +63,7 @@ const PlaceDetail = () => {
                         <h1>{placeName}</h1>
                         <p>{description}</p>
                         <div className="flex justify-center gap-6">
-                            <button onClick={handleLikes} disabled={isLiked} className="btn btn-accent px-10">Like ({likes.length})</button>
+                            <button onClick={handleLikes} disabled={isLiked} className="btn btn-accent px-10">Like ({nLikes})</button>
                             <button onClick={handleClick} className="btn btn-accent px-10">Go back</button>
                         </div>
 
