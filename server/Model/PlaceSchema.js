@@ -23,7 +23,10 @@ const placeSchema = new mongoose.Schema({
         type: String
     },
     likes: [{
-        username: String
+        username: {
+            type: String,
+            unique: true
+        }
     }],
 });
 

@@ -7,6 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { useAuth } from "../Common/authContext";
+import { useEffect } from "react";
 
 
 
@@ -14,20 +15,29 @@ const Home = () => {
   const { allPlaces, setAllPlaces } = useAuth();
 
   const navigate = useNavigate();
-
+  useEffect(() => {
+    axios.get('http://localhost:5000/places')
+      .then(response => {
+        setAllPlaces(response.data);
+        console.log(allPlaces);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const city = e.target.cityName.value;
-    console.log(city);
+    console.log(city.toLowerCase());
+    console.log(allPlaces);
     if (city) {
       try {
-
-        const response = await axios.get('http://localhost:5000/city', { params: { city } });
-        console.log(response.data);
-        console.log(response.data.length);
-        if (response.data.length != 0) {
-          setAllPlaces(response.data);
+        const response = allPlaces.filter(item => item.city.toLowerCase() === city.toLowerCase());
+        console.log(response);
+        console.log(response.length);
+        if (response.length != 0) {
+          setAllPlaces(response);
           navigate('/places',)
           console.log(allPlaces);
         }

@@ -3,10 +3,12 @@ import { useAuth } from "../Common/authContext";
 import Place from "../Common/Place";
 
 
+
 const PlacesTab = ({ sItem }) => {
   console.log(sItem);
   const { allPlaces } = useAuth();
   console.log(allPlaces);
+
   if (sItem) {
     const places = allPlaces.filter(item => item.placeName.toLowerCase() === sItem.toLowerCase());
 
