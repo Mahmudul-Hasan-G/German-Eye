@@ -17,7 +17,7 @@ const Insert = () => {
     image: null,
     placeName: '',
     description: '',
-    likes: null
+    likes: []
   });
 
 
@@ -37,7 +37,7 @@ const Insert = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        navigate('/places');
+        navigate('/');
       }
 
     } catch (error) {

@@ -6,13 +6,13 @@ import axios from "axios";
 
 
 const PlaceDetail = () => {
-    const [nLikes, setNLikes] = useState();
     const { username } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const { place } = location.state || {};
     const { _id, city, address, zipCode, image, placeName, description, likes } = place || {};
     const [isLiked, setIsLiked] = useState(false);
+    const [nLikes, setNLikes] = useState();
 
     console.log(_id);
     console.log(username);
@@ -22,21 +22,25 @@ const PlaceDetail = () => {
 
 
     const checkIfLiked = async () => {
-        const response1 = likes.some(like => like.username === username);
-        setIsLiked(response1);
-        setNLikes(likes.length);
-
+        if (likes === null) {
+            setNLikes(0)
+        } else {
+            const response = likes.some(like => like.username === username);
+            setNLikes(likes.length)
+            setIsLiked(response);
+        }
     };
 
     const handleLikes = async () => {
         try {
             if (isLiked === false) {
-                await axios.post('http://localhost:5000/placeById', { username, _id });
-
                 setIsLiked(true);
-                const response = await axios.get('http://localhost:5000/placeById', { params: { _id } });
+                const response = await axios.post('http://localhost:5000/placeById', { username, _id });
+
+
                 setNLikes(response.data);
-                console.log(response.data);
+                navigate('/');
+
             } else {
                 console.log('Already liked!');
             }

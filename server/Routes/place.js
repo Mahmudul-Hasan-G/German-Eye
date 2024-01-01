@@ -71,18 +71,19 @@ router.get(('/mydata'), CheckJwt, async (req, res) => {
 router.get(('/placeByIdG'), async (req, res) => {
     try {
         const placeId = req.query._id;
-        console.log(placeId);
+        const username = req.query.username;
+        console.log(placeId, username);
         const placeDataById = await Place.findById({
             _id: placeId
         });
         if (!placeDataById) {
             res.status(404).json({ message: 'Place not found' });
         }
-        // const likedByUser = placeDataById.likes.some(like => like.username === req.query.username);
-        // console.log(likedByUser);
-        // res.json({ likedByUser });
-        console.log(placeDataById.likes.length);
-        res.json(placeDataById.likes.length);
+
+        const likedByUser = placeDataById.likes.some(like => like.username === req.query.username);
+        console.log(likedByUser);
+        res.json({ likedByUser });
+
 
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -92,22 +93,30 @@ router.get(('/placeByIdG'), async (req, res) => {
 router.post(('/placeById'), async (req, res) => {
     try {
         const placeId = req.body._id;
-        console.log(placeId);
+        const username = req.body.username;
+        console.log(placeId, username);
+        console.log(req.body);
         const placeDataById = await Place.findById({
             _id: placeId
         });
+
         if (!placeDataById) {
             res.status(404).json({ message: 'Place not found' });
         }
-        const likedByUser = placeDataById.likes.some(like => like.username === req.query.username);
-        if (!likedByUser) {
-            placeDataById.likes.push({ username: req.body.username });
-            await placeDataById.save();
-            res.status(201).json({ message: 'Place liked!' });
+
+        if (placeDataById.likes === null) {
+            placeDataById.likes = [];
         }
+        placeDataById.likes.push({ username: username });
+        await placeDataById.save();
+
+
+        res.json(placeDataById.likes.length);
+        console.log(placeDataById.likes.length);
 
 
     } catch (error) {
+
         res.status(500).json({ message: error.message });
     }
 });
