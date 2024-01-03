@@ -120,7 +120,7 @@ const Home = () => {
             </form>
           </div>
         </div>
-        <div className="carousel lg:w-1/2 h-2/3 rounded-full">
+        <div className="carousel lg:w-1/2 lg:h-2/3 rounded-full">
           <div id="slide1" className="carousel-item relative w-full">
             <img src={b1} className="w-full" />
             <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

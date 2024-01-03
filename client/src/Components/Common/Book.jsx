@@ -35,14 +35,14 @@ const Book = () => {
 
   return (
     <div>
-      <div style={{ backgroundImage: `url(${image})` }} className=" bg-cover grid grid-cols-3 gap-6 justify-items-center py-10">
+      <div style={{ backgroundImage: `url(${image})` }} className=" bg-cover grid grid-cols-4 gap-6 justify-items-center py-10">
         <div className="flex items-center">
-          <button className='btn btn-accent' onClick={prevPage} disabled={pageNumber <= 1}>
-            Previous
+          <button className='btn btn-accent text-2xl' onClick={prevPage} disabled={pageNumber <= 1}>
+            Previous Page
           </button>
         </div>
-        <div>
-          <Document className=" border-solid border-2 w-100% shadow-xl" file={book} onLoadSuccess={onDocumentLoadSuccess}>
+        <div className='col-span-2'>
+          <Document className=" border-solid border-2 w-100% shadow-xl w-full" file={book} onLoadSuccess={onDocumentLoadSuccess}>
             <Page pageNumber={pageNumber} />
           </Document>
           <style>
@@ -53,8 +53,8 @@ const Book = () => {
           <p style={{ fontFamily: "'Whisper', cursive" }} className='bg-black my-4 text-center text-4xl text-white'>Page {pageNumber} of {numPages}</p>
         </div>
         <div className="flex items-center">
-          <button className='btn btn-accent' onClick={nextPage} disabled={pageNumber >= numPages}>
-            Next
+          <button className='btn btn-accent text-2xl' onClick={nextPage} disabled={pageNumber >= numPages}>
+            Next Page
           </button>
         </div>
       </div>
