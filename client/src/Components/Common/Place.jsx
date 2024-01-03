@@ -39,17 +39,21 @@ const Place = ({ place }) => {
     }
     return (
 
-        <div className="card lg:card-side bg-base-100 shadow-xl">
-            <figure><img className="w-48 h-40" src={image} alt="Album" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">{city}</h2>
+        <div className="card w-full bg-base-100 shadow-xl items-center">
+            <h2 className="card-title text-3xl">{city}</h2>
+            <figure className="px-10 pt-10">
+                <img src={image} alt="Shoes" className="rounded-xl h-96 w-96" />
+            </figure>
+            <div className="card-body items-center text-center">
+
                 <p>{address}</p>
                 <div className="card-actions">
-                    <button onClick={handelButton} className="btn btn-accent">To Know more</button>
+                    <button onClick={handelButton} className="btn btn-accent">To know more</button>
                 </div>
             </div>
-
         </div>
+
+
     );
 };
 

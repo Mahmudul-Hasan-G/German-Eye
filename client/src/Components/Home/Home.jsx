@@ -1,8 +1,8 @@
 import Marquee from "react-fast-marquee";
-import b1 from '/b1.jpg';
-import d1 from '/d1.avif';
-import s1 from '/s1.jpg';
-import m1 from '/m1.jpg';
+import b1 from '/images/b1.jpg';
+import d1 from '/images/d1.avif';
+import s1 from '/images/s1.jpg';
+import m1 from '/images/m1.jpg';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
@@ -93,7 +93,7 @@ const Home = () => {
         <h1 className="text-6xl mb-4 p-2">Your Life, Your Memories, Our Place.
         </h1>
       </Marquee>
-      <div className="h-screen w-full bg-cover bg-center lg:flex items-center justify-center gap-x-36" style={{ backgroundImage: `url(/lake.jpg)` }}>
+      <div className="h-screen w-full bg-cover bg-center lg:flex items-center justify-center gap-x-36" style={{ backgroundImage: `url(/images/lake.jpg)` }}>
         <div>
           <div className="max-w-md">
             <h1 className="mb-5 text-cyan-400 text-6xl font-bold">Bring your Journey to US!</h1>
