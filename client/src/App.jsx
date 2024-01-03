@@ -9,11 +9,11 @@ const App = () => {
 
 
   return (
-    <div className='mx-6'>
+    <div className='lg:mx-6'>
       <Header />
       <Outlet />
       <Footer />
-     
+
     </div>
   )
 }

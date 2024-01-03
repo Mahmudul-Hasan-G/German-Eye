@@ -45,7 +45,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="bg-cover" style={{ backgroundImage: `url(../../../public/images/l1.jpg)` }}>
+    <div className="bg-cover" style={{ backgroundImage: `url(/images/l1.jpg)` }}>
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse gap-x-28">
           <div className="text-center lg:text-left">

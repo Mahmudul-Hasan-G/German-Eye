@@ -22,7 +22,7 @@ const Library = () => {
             <h2 className="text-3xl text-center font-bold pt-6">SCI-FI</h2>
             <figure className="px-10 pt-10">
               <img
-                src="../../../public/images/jv.jpg"
+                src="/images/jv.jpg"
                 alt="Books"
                 className="rounded-xl"
               />
@@ -31,7 +31,7 @@ const Library = () => {
               <h2 className="card-title">20,000 leagues under the sea</h2>
               <p>During the year 1866, ships of various nationalities sight a mysterious sea monster, which, it is later suggested, might be a gigantic narwhal. The U.S. government assembles an expedition in New York City to find and destroy the monster.</p>
               <div className="card-actions">
-                <button onClick={() => handleClick("../../../public/books/20k.pdf", "/images/jv.jpg")}
+                <button onClick={() => handleClick("/books/20k.pdf", "/images/jv.jpg")}
                   className="btn btn-accent">
                   Read me now!
                 </button>
@@ -43,7 +43,7 @@ const Library = () => {
             <h2 className="text-3xl text-center font-bold pt-6">Adventure</h2>
             <figure className="px-10 pt-10">
               <img
-                src="../../../public/images/MY.jpg"
+                src="/images/MY.jpg"
                 alt="Books"
                 className="rounded-xl"
               />
@@ -52,7 +52,7 @@ const Library = () => {
               <h2 className="card-title">The Mysterious Island by Jules</h2>
               <p>The Mysterious Island is a 19th-century science-fiction adventure novel by French author Jules Verne. The plot concerns five men who, during the American Civil War, escape a prison camp in Richmond, Virginia by stealing a hot air balloon and subsequently discover an uninhabited island .</p>
               <div className="card-actions">
-                <button onClick={() => handleClick("../../../public/books/MI.pdf", "/images/MY.jpg")}
+                <button onClick={() => handleClick("/books/MI.pdf", "/images/MY.jpg")}
                   className="btn btn-accent"
                 >
                   Read me now!
@@ -74,7 +74,7 @@ const Library = () => {
               <h2 className="card-title">The Adventure of the Red Circle</h2>
               <p>When the mysterious lodger (actually a woman, not a man) shows up, she tells the detectives that the dead man was trying to kill her husband for betraying a criminal enterprise known as the Red Circle. In the end, the couple are safe, the bad guy is dead and self-defense is the explanation.</p>
               <div className="card-actions">
-                <button onClick={() => handleClick("../../../public/books/trc.pdf", "/images/trc.webp")}
+                <button onClick={() => handleClick("/books/trc.pdf", "/images/trc.webp")}
                   className="btn btn-accent"
                 >
                   Read me now!
@@ -96,7 +96,7 @@ const Library = () => {
               <h2 className="card-title">Ancient Rome</h2>
               <p>They were great soldiers and could conquer: they could also hold and keep their conquests and impress the Roman stamp on all the peoples over whom they ruled.</p>
               <div className="card-actions">
-                <button onClick={() => handleClick("../../../public/books/ar.pdf", "/images/ar.jpg")}
+                <button onClick={() => handleClick("/books/ar.pdf", "/images/ar.jpg")}
                   className="btn btn-accent">
                   Read me now!
                 </button>
@@ -118,7 +118,7 @@ const Library = () => {
               <p>
                 A quality reprint of : 365 Foreign Dishes , originally published in 1908 with the subtitle - A Foreign Dish for Every Day in the Year. Starting on January 1st with Austrian Goulash and ending on December 31st with French Braised Sweetbread, you can cook your way around the world all year long! Dedicated to all Vintage Cookbook Lovers!</p>
               <div className="card-actions">
-                <button onClick={() => handleClick("../../../public/books/365.pdf", "/images/365.jpg")}
+                <button onClick={() => handleClick("/books/365.pdf", "/images/365.jpg")}
                   className="btn btn-accent">
                   Read me now!
                 </button>
@@ -131,7 +131,7 @@ const Library = () => {
             <h2 className="text-3xl text-center font-bold pt-6">Romance</h2>
             <figure className="px-10 pt-10">
               <img
-                src="../../../public/images/wiw.jpg"
+                src="/images/wiw.jpg"
                 alt="Books"
                 className="rounded-xl"
               />
@@ -141,7 +141,7 @@ const Library = () => {
               <p>
                 It was written by Wilkie Collins in 1859 and tells a story of intrigue in London. Walter Hartright is a young art teacher. One night in London, he sees a distressed woman dressed entirely in white. He gives her directions, and later finds out from the police that she had escaped from a nearby asylum.</p>
               <div className="card-actions">
-                <button onClick={() => handleClick("../../../public/books/wiw.pdf", "/images/wiw.jpg")}
+                <button onClick={() => handleClick("/books/wiw.pdf", "/images/wiw.jpg")}
                   className="btn btn-accent">
                   Read me now!
                 </button>
