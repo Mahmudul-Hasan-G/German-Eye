@@ -117,10 +117,10 @@ const Header = () => {
         <div className="navbar-end">
           {isLoggedIn ? (
             <>
-              <button onClick={handleSignOut} className="btn font-bold">Sign out</button>
+              <button onClick={handleSignOut} className="btn font-bold btn-accent">Sign out</button>
             </>
           ) : (
-            <Link to='signin' className="btn font-bold">Sign in!</Link>
+            <Link to='signin' className="btn font-bold btn-accent">Sign in!</Link>
           )}
         </div>
       </div>
