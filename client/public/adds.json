@@ -1,0 +1,32 @@
+[
+    {
+        "id": "01",
+        "city": "Berlin",
+        "image": "./images/badd1.jpg"
+    },
+    {
+        "id": "02",
+        "city": "Berlin",
+        "image": "./images/1.avif"
+    },
+    {
+        "id": "03",
+        "city": "Berlin",
+        "image": "./images/2.jpeg"
+    },
+    {
+        "id": "04",
+        "city": "Berlin",
+        "image": "./images/3.webp"
+    },
+    {
+        "id": "05",
+        "city": "Berlin",
+        "image": "./images/6.jpeg"
+    },
+    {
+        "id": "06",
+        "city": "Berlin",
+        "image": "./images/5.jpg"
+    }
+]

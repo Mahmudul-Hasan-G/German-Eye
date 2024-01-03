@@ -81,7 +81,7 @@ const Insert = () => {
 
   return (
 
-    <div className='bg-cover' style={{ backgroundImage: `url(/a2.jpg)` }}>
+    <div className='bg-cover' style={{ backgroundImage: `url(/images/a2.jpg)` }}>
 
       <div className='flex justify-center'>
         <h1 className="text-center text-4xl font-bold mb-6 text-red-500 border-b-2 border-yellow-500 rounded-full px-4 py-4 mt-4">

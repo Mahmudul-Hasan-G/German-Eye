@@ -46,7 +46,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="bg-cover" style={{backgroundImage:`url(/gate.jpg)`}}>
+    <div className="bg-cover" style={{ backgroundImage: `url(../../../public/images/gate.jpg)` }}>
       <div className="min-h-screen flex items-center justify-center">
         <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
           <h2 className="text-4xl font-bold mb-4 text-red-500">Sign Up with Us</h2>

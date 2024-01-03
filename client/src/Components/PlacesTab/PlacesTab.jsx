@@ -14,7 +14,7 @@ const PlacesTab = ({ sItem }) => {
 
     return (
       <div>
-        <div className="grid grid-cols-3  gap-4">
+        <div className="grid grid-cols-2  gap-4">
           {
             places.map(place => <Place
               key={place._id}
@@ -28,7 +28,7 @@ const PlacesTab = ({ sItem }) => {
   else {
     return (
       <div>
-        <div className="grid grid-cols-3  gap-4">
+        <div className="grid grid-cols-2  gap-4">
           {
             allPlaces.map(place => <Place
               key={place._id}

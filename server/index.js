@@ -22,7 +22,6 @@ dotenv.config({ path: ".env" });
 
 const port = process.env.PORT || 3000;
 connectDB();
-
 app.use(signIn);
 app.use(signUp);
 app.use(signOut);

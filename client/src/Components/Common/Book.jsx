@@ -3,7 +3,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Book = () => {
   const location = useLocation();
@@ -12,6 +12,7 @@ const Book = () => {
   console.log(book);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const navigate = useNavigate();
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -27,6 +28,10 @@ const Book = () => {
       setPageNumber(pageNumber - 1);
     }
   };
+
+  const handleGoBack = () => {
+    navigate(-1);
+  }
 
   return (
     <div>
@@ -52,6 +57,9 @@ const Book = () => {
             Next
           </button>
         </div>
+      </div>
+      <div className='text-center'>
+        <button onClick={handleGoBack} className='btn btn-accent my-6 '>Go back</button>
       </div>
     </div>
   );
