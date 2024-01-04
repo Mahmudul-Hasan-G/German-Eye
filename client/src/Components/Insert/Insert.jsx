@@ -37,7 +37,7 @@ const Insert = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        navigate('/');
+        navigate('/places');
       }
 
     } catch (error) {

@@ -70,7 +70,7 @@ const Header = () => {
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
               <li><Link to='/'>Home</Link></li>
               <li>
-                {<Link onClick={handleAllData} >Places</Link>}
+                <Link onClick={handleAllData} >Places</Link>
 
               </li>
               {isLoggedIn ? (
@@ -99,7 +99,7 @@ const Header = () => {
             <li tabIndex={0}>
 
 
-              {<Link onClick={handleAllData} >Places</Link>}
+              <Link onClick={handleAllData} >Places</Link>
 
 
             </li>

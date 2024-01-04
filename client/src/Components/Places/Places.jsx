@@ -3,30 +3,37 @@ import { useEffect, useState } from "react";
 import PlacesTab from "../PlacesTab/PlacesTab.jsx";
 import 'react-tabs/style/react-tabs.css';
 import AddDetail from '../AddDetail/AddDetail.jsx';
+import { useAuth } from '../Common/authContext.jsx';
+import axios from 'axios';
 
 
 const Places = () => {
-    const [adds, setAdds] = useState([]);
+    const { allPlaces, setAllPlaces } = useAuth();
     const [ladds, setLadds] = useState([]);
     const [radds, setRadds] = useState([]);
+    const { adds } = useAuth();
     const categories = ["Park", "Museum", "Cafeteria", "Restaurant", "Mall"];
     console.log(categories);
     const [tabIndex, setTabIndex] = useState(0);
     console.log(tabIndex);
 
-    fetch('adds.json')
-        .then(res => res.json())
-        .then(data => {
-            setAdds(data)
-        })
-
     useEffect(() => {
+        axios.get('http://localhost:5000/places')
+            .then(response => {
+                setAllPlaces(response.data);
+                console.log(allPlaces);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         const firstHalf = adds.slice(0, adds.length / 2);
         setLadds(firstHalf);
         const secondHalf = adds.slice(adds.length / 2);
         setRadds(secondHalf);
+    }, [])
 
-    }, [adds]);
+
+
 
 
     return (
