@@ -94,16 +94,27 @@ const Insert = () => {
 
             <div className="mb-4">
               <h3 className="text-lg font-bold mb-2">City</h3>
-              <input
+              <select
                 className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                type="text"
-                list="cityOptions"
                 name="city"
                 value={place.city}
                 onChange={handleInputChange}
                 placeholder="Enter name of the city you're visiting"
-              />
-              <datalist id="cityOptions">
+              >
+                <option value="">Select city</option>
+                <option value="Berlin">Berlin</option>
+                <option value="Duisburg">Duisburg</option>
+                <option value="Stuttgart">Stuttgart</option>
+                <option value="Munich">Munich</option>
+                <option value="Frankfurt">Frankfurt</option>
+                <option value="Cologne">Cologne</option>
+                <option value="Hamburg">Hamburg</option>
+                <option value="Leipzig">Leipzig</option>
+                <option value="Nuremberg">Nuremberg</option>
+                <option value="Bremen">Bremen</option>
+                <option value="Hanover">Hanover</option>
+                <option value="Mannheim">Mannheim</option>
+                {/* <datalist id="cityOptions">
                 <option value="Berlin" />
                 <option value="Duisburg" />
                 <option value="Stuttgart" />
@@ -116,7 +127,8 @@ const Insert = () => {
                 <option value="Bremen" />
                 <option value="Hanover" />
                 <option value="Mannheim" />
-              </datalist>
+              </datalist> */}
+              </select>
             </div>
 
             <div className="mb-4">
@@ -155,22 +167,27 @@ const Insert = () => {
 
             <div className="mb-4">
               <h3 className="text-lg font-bold mb-2">Name of the place</h3>
-              <input
+              <select
                 className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                type="text"
-                list="placeOptions"
                 name="placeName"
                 value={place.placeName}
                 onChange={handleInputChange}
                 placeholder="what place are you in"
-              />
-              <datalist id="placeOptions">
+              >
+                <option value="">Select place</option>
+                <option value="Park">Park</option>
+                <option value="Museum">Museum</option>
+                <option value="Cafeteria">Cafeteria</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Mall">Mall</option>
+                {/* <datalist id="placeOptions">
                 <option value="Park" />
                 <option value="Museum" />
                 <option value="Cafeteria" />
                 <option value="Restaurant" />
                 <option value="Mall" />
-              </datalist>
+              </datalist> */}
+              </select>
             </div>
 
             <div className="mb-4">

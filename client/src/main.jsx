@@ -19,6 +19,7 @@ import Places from './Components/Places/Places.jsx';
 import PlaceDetail from './Components/PlaceDetail/PlaceDetail.jsx';
 import AboutUs from './Components/AboutUs/AboutUs.jsx';
 import Book from './Components/Common/Book';
+import Contact from './Components/Contact/Contact.jsx';
 
 
 const router = createBrowserRouter([
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "/book",
         element: <Book />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />
       }
     ]
   },
