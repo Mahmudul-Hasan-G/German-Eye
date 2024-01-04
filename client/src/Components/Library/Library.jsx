@@ -17,7 +17,7 @@ const Library = () => {
       </h1>
 
       <div className="bg-cover" style={{ backgroundImage: `url(/images/lib.jpg)` }}>
-        <div className="grid grid-cols-3 justify-items-center gap-12 py-12 " >
+        <div className="lg:grid grid-cols-3 justify-items-center gap-12 py-12 " >
           <div className="card w-96 bg-base-100 shadow-xl">
             <h2 className="text-3xl text-center font-bold pt-6">SCI-FI</h2>
             <figure className="px-10 pt-10">

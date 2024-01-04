@@ -13,13 +13,19 @@ import { useEffect } from "react";
 
 const Home = () => {
   const { allPlaces, setAllPlaces } = useAuth();
-
+  const { adds, setAdds } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
+    fetch('adds.json')
+      .then(res => res.json())
+      .then(data => {
+        setAdds(data)
+        console.log(adds)
+      })
     axios.get('http://localhost:5000/places')
       .then(response => {
         setAllPlaces(response.data);
-        console.log(allPlaces);
+
       })
       .catch(error => {
         console.error('Error:', error);
@@ -38,7 +44,7 @@ const Home = () => {
         console.log(response.length);
         if (response.length != 0) {
           setAllPlaces(response);
-          navigate('/places',)
+          navigate('/places', { state: city })
           console.log(allPlaces);
         }
         else {

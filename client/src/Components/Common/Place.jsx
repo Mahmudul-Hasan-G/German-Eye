@@ -3,16 +3,34 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../Common/authContext.jsx';
 import Swal from 'sweetalert2';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 const Place = ({ place }) => {
+    const [sCity, setScity] = useState({});
     const { isLoggedIn } = useAuth();
     const navigate = useNavigate();
-    const { city, address, image } = place || {};
+    const { _id } = place || {};
+    const { city, image, address, likes } = sCity;
+
+    useEffect(() => {
+        checkLikes();
+    }, [])
+
+    const checkLikes = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/placeByIdG', { params: { _id } });
+            setScity(response.data);
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
 
     const handelButton = () => {
         if (isLoggedIn) {
-            navigate('/place-detail', { state: { place } })
+            navigate('/place-detail', { state: { sCity } })
         }
         else {
             Swal.fire({
@@ -45,7 +63,7 @@ const Place = ({ place }) => {
                 <img src={image} alt="Shoes" className="rounded-xl h-96 w-96" />
             </figure>
             <div className="card-body items-center text-center">
-
+                <p>{likes?.length} people liked this place</p>
                 <p>{address}</p>
                 <div className="card-actions">
                     <button onClick={handelButton} className="btn btn-accent">To know more</button>

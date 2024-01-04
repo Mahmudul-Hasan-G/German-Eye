@@ -9,10 +9,10 @@ const PlaceDetail = () => {
     const { username } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
-    const { place } = location.state || {};
-    const { _id, city, address, zipCode, image, placeName, description, likes } = place || {};
+    const { sCity } = location.state || {};
+    const { _id, city, address, zipCode, image, placeName, description, likes } = sCity || {};
     const [isLiked, setIsLiked] = useState(false);
-    const [nLikes, setNLikes] = useState();
+    const { nLikes, setNLikes } = useAuth();
 
     console.log(_id);
     console.log(username);
@@ -39,7 +39,7 @@ const PlaceDetail = () => {
 
 
                 setNLikes(response.data);
-                navigate('/');
+
 
             } else {
                 console.log('Already liked!');
