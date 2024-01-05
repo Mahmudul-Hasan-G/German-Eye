@@ -56,19 +56,20 @@ const Place = ({ place }) => {
 
     }
     return (
-
+<div className="mt-6">
         <div className="card w-full bg-base-100 shadow-xl items-center">
             <h2 className="card-title text-3xl">{city}</h2>
-            <figure className="px-10 pt-10">
+            <figure className="px-6 pt-6">
                 <img src={image} alt="Shoes" className="rounded-xl h-96 w-96" />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center text-center text-2xl">
                 <p>{likes?.length} people liked this place</p>
                 <p>{address}</p>
-                <div className="card-actions">
-                    <button onClick={handelButton} className="btn btn-accent">To know more</button>
+                <div className="card-actions mt-6">
+                    <button onClick={handelButton} className="btn btn-accent text-2xl">To know more</button>
                 </div>
             </div>
+        </div>
         </div>
 
 

@@ -18,13 +18,13 @@ const Library = () => {
 
       <div className="bg-cover" style={{ backgroundImage: `url(/images/lib.jpg)` }}>
         <div className="lg:grid grid-cols-3 justify-items-center gap-12 py-12 " >
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-full bg-base-100 shadow-xl">
             <h2 className="text-3xl text-center font-bold pt-6">SCI-FI</h2>
-            <figure className="px-10 pt-10">
+            <figure className="px-10 pt-10 ">
               <img
                 src="/images/jv.jpg"
                 alt="Books"
-                className="rounded-xl"
+                className="rounded-xl w-full h-full"
               />
             </figure>
             <div className="card-body items-center text-center">
@@ -39,13 +39,13 @@ const Library = () => {
             </div>
           </div>
 
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-full bg-base-100 shadow-xl">
             <h2 className="text-3xl text-center font-bold pt-6">Adventure</h2>
             <figure className="px-10 pt-10">
               <img
                 src="/images/MY.jpg"
                 alt="Books"
-                className="rounded-xl"
+                className="rounded-xl w-full h-full"
               />
             </figure>
             <div className="card-body items-center text-center">
@@ -61,13 +61,13 @@ const Library = () => {
             </div>
           </div>
 
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-full bg-base-100 shadow-xl">
             <h2 className="text-3xl text-center font-bold pt-6">Mystery</h2>
             <figure className="px-10 pt-10 h-full">
               <img
                 src="/images/trc.webp"
                 alt="Books"
-                className="rounded-xl"
+                className="rounded-xl w-full h-full"
               />
             </figure>
             <div className="card-body items-center text-center">
@@ -83,13 +83,13 @@ const Library = () => {
             </div>
           </div>
 
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-full bg-base-100 shadow-xl">
             <h2 className="text-3xl text-center font-bold pt-6">Biography</h2>
             <figure className="px-10 pt-10">
               <img
                 src="/images/ar.jpg"
                 alt="Books"
-                className="rounded-xl"
+                className="rounded-xl w-full h-full"
               />
             </figure>
             <div className="card-body items-center text-center">
@@ -104,13 +104,13 @@ const Library = () => {
             </div>
           </div>
 
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-full bg-base-100 shadow-xl">
             <h2 className="text-3xl text-center font-bold pt-6">Cooking</h2>
             <figure className="px-10 pt-10">
               <img
                 src="/images/365.jpg"
                 alt="Books"
-                className="rounded-xl"
+                className="rounded-xl w-full h-full"
               />
             </figure>
             <div className="card-body items-center text-center">
@@ -127,13 +127,13 @@ const Library = () => {
           </div>
 
 
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-full bg-base-100 shadow-xl">
             <h2 className="text-3xl text-center font-bold pt-6">Romance</h2>
             <figure className="px-10 pt-10">
               <img
                 src="/images/wiw.jpg"
                 alt="Books"
-                className="rounded-xl"
+                className="rounded-xl w-full h-full"
               />
             </figure>
             <div className="card-body items-center text-center">
