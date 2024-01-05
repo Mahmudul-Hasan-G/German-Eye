@@ -42,11 +42,11 @@ const Book = () => {
           </button>
         </div>
         <div className='lg:col-span-2'>
-          <Document className=" border-solid border-2 w-100% shadow-xl w-full" file={book} onLoadSuccess={onDocumentLoadSuccess}>
+          <Document className=" border-solid border-2 shadow-xl w-full" file={book} onLoadSuccess={onDocumentLoadSuccess}>
             <Page pageNumber={pageNumber} />
           </Document>
           <style>
-            {`
+            {` 
           @import url('https://fonts.googleapis.com/css2?family=Whisper&display=swap');
         `}
           </style>
