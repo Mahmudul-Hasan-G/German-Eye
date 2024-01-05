@@ -35,13 +35,13 @@ const Book = () => {
 
   return (
     <div>
-      <div style={{ backgroundImage: `url(${image})` }} className=" bg-cover grid grid-cols-4 gap-6 justify-items-center py-10">
-        <div className="flex items-center">
+      <div style={{ backgroundImage: `url(${image})` }} className=" bg-cover lg:grid grid-cols-4 gap-6 justify-items-center py-10">
+        <div className="lg:flex items-center">
           <button className='btn btn-accent text-2xl' onClick={prevPage} disabled={pageNumber <= 1}>
             Previous Page
           </button>
         </div>
-        <div className='col-span-2'>
+        <div className='lg:col-span-2'>
           <Document className=" border-solid border-2 w-100% shadow-xl w-full" file={book} onLoadSuccess={onDocumentLoadSuccess}>
             <Page pageNumber={pageNumber} />
           </Document>
