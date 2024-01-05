@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useAuth } from '../Common/authContext.jsx';
 
+const MAX_DESCRIPTION_LENGTH = 500;
 
 const Insert = () => {
   const { username } = useAuth();
@@ -48,12 +49,15 @@ const Insert = () => {
   };
 
   const handleInputChange = (e) => {
-    setPlace({
-      ...place,
-      userName: username,
-      [e.target.name]: e.target.value,
-    });
-
+    const inputValue = e.target.value;
+    if (inputValue.length <= MAX_DESCRIPTION_LENGTH) {
+      setPlace({
+        ...place,
+        userName: username,
+        description: inputValue,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   const handleImageUpload = async (e) => {
@@ -114,20 +118,6 @@ const Insert = () => {
                 <option value="Bremen">Bremen</option>
                 <option value="Hanover">Hanover</option>
                 <option value="Mannheim">Mannheim</option>
-                {/* <datalist id="cityOptions">
-                <option value="Berlin" />
-                <option value="Duisburg" />
-                <option value="Stuttgart" />
-                <option value="Munich" />
-                <option value="Frankfurt" />
-                <option value="Cologne" />
-                <option value="Hamburg" />
-                <option value="Leipzig" />
-                <option value="Nuremberg" />
-                <option value="Bremen" />
-                <option value="Hanover" />
-                <option value="Mannheim" />
-              </datalist> */}
               </select>
             </div>
 
@@ -180,26 +170,32 @@ const Insert = () => {
                 <option value="Cafeteria">Cafeteria</option>
                 <option value="Restaurant">Restaurant</option>
                 <option value="Mall">Mall</option>
-                {/* <datalist id="placeOptions">
-                <option value="Park" />
-                <option value="Museum" />
-                <option value="Cafeteria" />
-                <option value="Restaurant" />
-                <option value="Mall" />
-              </datalist> */}
               </select>
             </div>
 
             <div className="mb-4">
               <h3 className="text-lg font-bold mb-2">Description Area</h3>
-              <input
-                className="w-full px-3 py-16 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                type="text"
-                name="description"
-                value={place.description}
-                onChange={handleInputChange}
-                placeholder="Describe what we are seeing"
-              />
+              <div style={{ position: 'relative' }}>
+                <textarea
+                  className="w-full px-3 py-16 border rounded shadow appearance-none focus:outline-none focus:shadow-outline resize-none"
+                  type="text"
+                  name="description"
+                  value={place.description}
+                  onChange={handleInputChange}
+                  placeholder="Describe what we are seeing maximum 500 character"
+                  maxLength={MAX_DESCRIPTION_LENGTH}
+                />
+                <p
+                  style={{
+                    position: 'absolute',
+                    bottom: '5px',
+                    right: '5px',
+                    color: place.description.length >= MAX_DESCRIPTION_LENGTH ? 'red' : 'inherit',
+                  }}
+                >
+                  Characters remaining: {MAX_DESCRIPTION_LENGTH - place.description.length}
+                </p>
+              </div>
             </div>
 
 
