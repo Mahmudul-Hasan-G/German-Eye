@@ -2,25 +2,32 @@ import mongoose from "mongoose";
 
 const placeSchema = new mongoose.Schema({
     userName: {
-        type: String
+        type: String,
+        required: true
     },
     city: {
-        type: String
+        type: String,
+        required: true
     },
     address: {
-        type: String
+        type: String,
+        required: true
     },
     zipCode: {
-        type: String
+        type: String,
+        required: true
     },
     image: {
-        type: String
+        type: String,
+        required: true
     },
     placeName: {
-        type: String
+        type: String,
+        required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     likes: [{
         username: {
