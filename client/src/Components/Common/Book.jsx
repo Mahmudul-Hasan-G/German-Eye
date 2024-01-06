@@ -35,6 +35,7 @@ const Book = () => {
 
   return (
     <div>
+
       <div style={{ backgroundImage: `url(${image})` }} className=" bg-cover ">
         <div className='lg:grid grid-cols-4 gap-6 justify-items-center py-10'>
           <div className="lg:flex items-center">
@@ -48,6 +49,8 @@ const Book = () => {
             </Document>
             <style>
               {`
+
+      
           @import url('https://fonts.googleapis.com/css2?family=Whisper&display=swap');
         `}
             </style>
