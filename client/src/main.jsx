@@ -59,15 +59,16 @@ const router = createBrowserRouter([
         path: "/about-us",
         element: <AboutUs />,
       },
-      {
-        path: "/book",
-        element: <Book />,
-      },
+
       {
         path: "/contact",
         element: <Contact />
       }
     ]
+  },
+  {
+    path: "/book",
+    element: <Book />,
   },
 ]);
 
