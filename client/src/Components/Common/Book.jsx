@@ -45,7 +45,7 @@ const Book = () => {
           </div>
           <div className='lg:col-span-2 '>
             <Document className=" border-solid border-red-500 border-2 shadow-xl" file={book} onLoadSuccess={onDocumentLoadSuccess}>
-              <Page pageNumber={pageNumber} className="w-full lg:w-4/5 mx-auto lg:mx-0" />
+              <Page pageNumber={pageNumber} width={430} className="lg:w-100%" />
             </Document>
             <style>
               {`
