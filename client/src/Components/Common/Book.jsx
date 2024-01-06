@@ -46,6 +46,7 @@ const Book = () => {
   }
 
   return (
+
     <div className='bg:pt-0 mt-20'>
       <div style={{ backgroundImage: `url(${image})` }} className=" lg:bg-cover bg-none ">
         <div className='lg:grid grid-cols-4 gap-6 lg:justify-items-center py-10'>
@@ -56,10 +57,14 @@ const Book = () => {
           </div>
           <div className='lg:col-span-2 '>
             <Document className=" border-solid border-red-500 border-2 shadow-xl" file={book} onLoadSuccess={onDocumentLoadSuccess}>
+
               <Page pageNumber={pageNumber} width={width > 600 ? 600 : 430} className="lg:w-full" />
+
             </Document>
             <style>
               {`
+
+      
           @import url('https://fonts.googleapis.com/css2?family=Whisper&display=swap');
         `}
             </style>
