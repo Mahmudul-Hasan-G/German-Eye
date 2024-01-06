@@ -60,14 +60,14 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: "/book",
-        element: <Book />,
-      },
-      {
         path: "/contact",
         element: <Contact />
       }
     ]
+  },
+  {
+    path: "/book",
+    element: <Book />,
   },
 ]);
 
