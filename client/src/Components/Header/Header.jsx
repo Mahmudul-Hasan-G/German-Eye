@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useAuth } from '../Common/authContext.jsx';
-
+import Swal from 'sweetalert2';
 
 
 const Header = () => {
@@ -37,6 +37,25 @@ const Header = () => {
 
         navigate('/places');
         console.log(response.data);
+      }
+      else {
+        Swal.fire({
+          title: `Sorry you did not share any data yet!`,
+          showClass: {
+            popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+          },
+          hideClass: {
+            popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+          }
+        });
       }
     }
     catch (error) {

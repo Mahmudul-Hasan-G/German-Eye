@@ -22,14 +22,6 @@ const Home = () => {
         setAdds(data)
         console.log(adds)
       })
-    axios.get('http://localhost:5000/places')
-      .then(response => {
-        setAllPlaces(response.data);
-
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
   }, []);
 
   const handleSubmit = async (e) => {
@@ -39,11 +31,12 @@ const Home = () => {
     console.log(allPlaces);
     if (city) {
       try {
-        const response = allPlaces.filter(item => item.city.toLowerCase() === city.toLowerCase());
-        console.log(response);
-        console.log(response.length);
-        if (response.length != 0) {
-          setAllPlaces(response);
+        const response = await axios.get('http://localhost:5000/city', { params: { city } })
+
+        console.log(response.data);
+        console.log(response.data.length);
+        if (response.data.length != 0) {
+          setAllPlaces(response.data);
           navigate('/places', { state: city })
           console.log(allPlaces);
         }
@@ -106,22 +99,22 @@ const Home = () => {
             <p className="mb-5 font-bold text-4xl text-cyan-400">Let us see through your EYES</p>
 
             <form onSubmit={handleSubmit}>
-              <input type="text" name="cityName" list="cityOptions" placeholder="Write the City Name " className="input input-bordered input-accent w-full max-w-xs mb-4" />
+              <select type="text" name="cityName" placeholder="Write the City Name " className="input input-bordered input-accent w-full max-w-xs mb-4" >
 
-              <datalist id="cityOptions">
-                <option value="Berlin" />
-                <option value="Duisburg" />
-                <option value="Stuttgart" />
-                <option value="Munich" />
-                <option value="Frankfurt" />
-                <option value="Cologne" />
-                <option value="Hamburg" />
-                <option value="Leipzig" />
-                <option value="Nuremberg" />
-                <option value="Bremen" />
-                <option value="Hanover" />
-                <option value="Mannheim" />
-              </datalist>
+                <option value="">Select city</option>
+                <option value="Berlin">Berlin</option>
+                <option value="Duisburg">Duisburg</option>
+                <option value="Stuttgart">Stuttgart</option>
+                <option value="Munich">Munich</option>
+                <option value="Frankfurt">Frankfurt</option>
+                <option value="Cologne">Cologne</option>
+                <option value="Hamburg">Hamburg</option>
+                <option value="Leipzig">Leipzig</option>
+                <option value="Nuremberg">Nuremberg</option>
+                <option value="Bremen">Bremen</option>
+                <option value="Hanover">Hanover</option>
+                <option value="Mannheim">Mannheim</option>
+              </select>
               <button type="submit" className="btn btn-accent text-3xl">Get Started</button>
             </form>
           </div>
