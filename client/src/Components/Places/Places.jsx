@@ -4,11 +4,10 @@ import PlacesTab from "../PlacesTab/PlacesTab.jsx";
 import 'react-tabs/style/react-tabs.css';
 import AddDetail from '../AddDetail/AddDetail.jsx';
 import { useAuth } from '../Common/authContext.jsx';
-import axios from 'axios';
+
 
 
 const Places = () => {
-    const { allPlaces, setAllPlaces } = useAuth();
     const [ladds, setLadds] = useState([]);
     const [radds, setRadds] = useState([]);
     const { adds } = useAuth();
@@ -18,14 +17,7 @@ const Places = () => {
     console.log(tabIndex);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/places')
-            .then(response => {
-                setAllPlaces(response.data);
-                console.log(allPlaces);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+
         const firstHalf = adds.slice(0, adds.length / 2);
         setLadds(firstHalf);
         const secondHalf = adds.slice(adds.length / 2);

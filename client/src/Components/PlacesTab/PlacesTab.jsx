@@ -9,9 +9,10 @@ const PlacesTab = ({ sItem }) => {
   const { allPlaces } = useAuth();
   console.log(allPlaces);
 
-  if (sItem) {
-    const places = allPlaces.filter(item => item.placeName.toLowerCase() === sItem.toLowerCase());
 
+  const places = allPlaces.filter(item => item.placeName.toLowerCase() === sItem.toLowerCase());
+  console.log(places);
+  if (places.length != 0) {
     return (
       <div>
         <div className="lg:grid grid-cols-2  gap-4">
@@ -24,20 +25,9 @@ const PlacesTab = ({ sItem }) => {
         </div>
       </div>
     );
-  }
-  else {
-    return (
-      <div>
-        <div className="lg:grid grid-cols-2  gap-4">
-          {
-            allPlaces.map(place => <Place
-              key={place._id}
-              place={place}
-            />)
-          }
-        </div>
-      </div>
-    );
+  } else {
+
+    return <div>No places available</div>;
   }
 
 

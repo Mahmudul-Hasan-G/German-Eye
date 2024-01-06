@@ -93,7 +93,7 @@ const Insert = () => {
         </h1>
       </div>
       <form className='flex justify-center' onSubmit={handleSubmit}>
-        <div className="flex flex-col items-center justify-center h-screen border rounded shadow-lg p-6 w-2/3 mb-8 bg-base-200">
+        <div className="flex flex-col items-center justify-center h-screen border rounded shadow-lg p-6 lg:w-2/3 mb-8 bg-base-200">
           <div className="container mx-auto p-4">
 
             <div className="mb-4">

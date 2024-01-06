@@ -42,7 +42,7 @@ router.get(('/places'), async (req, res) => {
 router.get(('/city'), async (req, res) => {
     try {
 
-        const city = req.query.search;
+        const city = req.query.city;
         console.log(city);
         const regexCity = new RegExp(city, 'i');
         const places = await Place.find({ city: { $regex: regexCity } });
@@ -80,10 +80,6 @@ router.get(('/placeByIdG'), async (req, res) => {
         if (!placeDataById) {
             res.status(404).json({ message: 'Place not found' });
         }
-
-        // const likedByUser = placeDataById.likes.some(like => like.username === req.query.username);
-        // console.log(likedByUser);
-
 
         res.json(placeDataById);
 

@@ -35,27 +35,29 @@ const Book = () => {
 
   return (
     <div>
-      <div style={{ backgroundImage: `url(${image})` }} className=" bg-cover lg:grid grid-cols-4 gap-6 justify-items-center py-10">
-        <div className="lg:flex items-center">
-          <button className='btn btn-accent text-2xl' onClick={prevPage} disabled={pageNumber <= 1}>
-            Previous Page
-          </button>
-        </div>
-        <div className='lg:col-span-2'>
-          <Document className=" border-solid border-2 w-100% shadow-xl w-full" file={book} onLoadSuccess={onDocumentLoadSuccess}>
-            <Page pageNumber={pageNumber} />
-          </Document>
-          <style>
-            {`
+      <div style={{ backgroundImage: `url(${image})` }} className=" bg-cover ">
+        <div className='lg:grid grid-cols-4 gap-6 justify-items-center py-10'>
+          <div className="lg:flex items-center">
+            <button className='btn btn-accent text-2xl' onClick={prevPage} disabled={pageNumber <= 1}>
+              Previous Page
+            </button>
+          </div>
+          <div className='lg:col-span-2 '>
+            <Document className=" border-solid border-red-500 border-2 shadow-xl" file={book} onLoadSuccess={onDocumentLoadSuccess}>
+              <Page pageNumber={pageNumber} className="w-full lg:w-4/5 mx-auto lg:mx-0" />
+            </Document>
+            <style>
+              {`
           @import url('https://fonts.googleapis.com/css2?family=Whisper&display=swap');
         `}
-          </style>
-          <p style={{ fontFamily: "'Whisper', cursive" }} className='bg-black my-4 text-center text-4xl text-white'>Page {pageNumber} of {numPages}</p>
-        </div>
-        <div className="flex items-center">
-          <button className='btn btn-accent text-2xl' onClick={nextPage} disabled={pageNumber >= numPages}>
-            Next Page
-          </button>
+            </style>
+            <p style={{ fontFamily: "'Whisper', cursive" }} className='bg-black my-4 text-center text-4xl text-white'>Page {pageNumber} of {numPages}</p>
+          </div>
+          <div className="flex items-center">
+            <button className='btn btn-accent text-2xl' onClick={nextPage} disabled={pageNumber >= numPages}>
+              Next Page
+            </button>
+          </div>
         </div>
       </div>
       <div className='text-center'>
