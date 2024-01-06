@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
@@ -13,6 +13,7 @@ const Book = () => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const navigate = useNavigate();
+  const [width, setWidth] = useState(window.innerWidth);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -29,15 +30,26 @@ const Book = () => {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const handleGoBack = () => {
     navigate(-1);
   }
 
   return (
-    <div>
 
-      <div style={{ backgroundImage: `url(${image})` }} className=" bg-cover ">
-        <div className='lg:grid grid-cols-4 gap-6 justify-items-center py-10'>
+    <div className='bg:pt-0 mt-20'>
+      <div style={{ backgroundImage: `url(${image})` }} className=" lg:bg-cover bg-none ">
+        <div className='lg:grid grid-cols-4 gap-6 lg:justify-items-center py-10'>
           <div className="lg:flex items-center">
             <button className='btn btn-accent text-2xl' onClick={prevPage} disabled={pageNumber <= 1}>
               Previous Page
@@ -45,7 +57,9 @@ const Book = () => {
           </div>
           <div className='lg:col-span-2 '>
             <Document className=" border-solid border-red-500 border-2 shadow-xl" file={book} onLoadSuccess={onDocumentLoadSuccess}>
-              <Page pageNumber={pageNumber} width={430} className="lg:w-100%" />
+
+              <Page pageNumber={pageNumber} width={width > 600 ? 600 : 430} className="lg:w-full" />
+
             </Document>
             <style>
               {`
