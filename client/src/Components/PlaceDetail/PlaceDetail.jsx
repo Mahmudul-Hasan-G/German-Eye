@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 const PlaceDetail = () => {
-    const { username } = useAuth();
+    const { loggedUserName } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const { sCity } = location.state || {};
@@ -15,7 +15,7 @@ const PlaceDetail = () => {
     const { nLikes, setNLikes } = useAuth();
 
     console.log(_id);
-    console.log(username);
+    console.log(loggedUserName);
     useEffect(() => {
         checkIfLiked();
     }, []);
@@ -25,7 +25,7 @@ const PlaceDetail = () => {
         if (likes === null) {
             setNLikes(0)
         } else {
-            const response = likes.some(like => like.username === username);
+            const response = likes.some(like => like.username === loggedUserName);
             setNLikes(likes.length)
             setIsLiked(response);
         }
@@ -35,9 +35,9 @@ const PlaceDetail = () => {
         try {
             if (isLiked === false) {
                 setIsLiked(true);
-                const response = await axios.post('http://localhost:5000/placeById', { username, _id });
+                const response = await axios.post('http://localhost:5000/placeById', { loggedUserName, _id });
 
-
+                console.log(response);
                 setNLikes(response.data);
 
 
@@ -63,8 +63,8 @@ const PlaceDetail = () => {
                     <div className="w-full">
                         <h2 className="text-6xl">{city}</h2>
                         <div className="text-2xl my-4">
-                        <p>{address}, {zipCode}</p>
-                        <h1>{placeName}</h1>
+                            <p>{address}, {zipCode}</p>
+                            <h1>{placeName}</h1>
                         </div>
                         <p className="text-3xl">{description}</p>
                         <div className="flex justify-center gap-6 mt-4">

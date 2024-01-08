@@ -8,7 +8,7 @@ import { useAuth } from '../Common/authContext.jsx';
 const SignIn = () => {
   const navigate = useNavigate();
 
-  const { setIsLoggedIn, setUsername } = useAuth();
+  const { setIsLoggedIn, setLoggedUserName } = useAuth();
 
 
   const handleSignIn = async (e) => {
@@ -33,7 +33,7 @@ const SignIn = () => {
       });
       if (data.message === "User is Signed in") {
         setIsLoggedIn(true);
-        setUsername(email);
+        setLoggedUserName(email);
         navigate('/');
       }
 

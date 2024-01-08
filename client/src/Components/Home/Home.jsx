@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Marquee from "react-fast-marquee";
 import b1 from '/images/b1.jpg';
 import d1 from '/images/d1.avif';

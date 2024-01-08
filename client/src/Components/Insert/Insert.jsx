@@ -7,7 +7,7 @@ import { useAuth } from '../Common/authContext.jsx';
 const MAX_DESCRIPTION_LENGTH = 500;
 
 const Insert = () => {
-  const { username } = useAuth();
+  const { loggedUserName } = useAuth();
   const navigate = useNavigate();
 
   const [place, setPlace] = useState({
@@ -21,6 +21,42 @@ const Insert = () => {
     likes: []
   });
 
+
+
+
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    if (inputValue.length <= MAX_DESCRIPTION_LENGTH) {
+      setPlace({
+        ...place,
+        userName: loggedUserName,
+        description: inputValue,
+        likes: [],
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64Image = await convertToBase64(file);
+
+    setPlace({
+      ...place,
+      image: base64Image,
+    });
+
+  };
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
 
 
   const handleSubmit = async (e) => {
@@ -46,38 +82,6 @@ const Insert = () => {
     }
 
 
-  };
-
-  const handleInputChange = (e) => {
-    const inputValue = e.target.value;
-    if (inputValue.length <= MAX_DESCRIPTION_LENGTH) {
-      setPlace({
-        ...place,
-        userName: username,
-        description: inputValue,
-        [e.target.name]: e.target.value,
-      });
-    }
-  };
-
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    const base64Image = await convertToBase64(file);
-
-    setPlace({
-      ...place,
-      image: base64Image,
-    });
-
-  };
-
-  const convertToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
   };
 
 
