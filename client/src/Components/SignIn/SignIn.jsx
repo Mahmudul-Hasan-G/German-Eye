@@ -31,7 +31,7 @@ const SignIn = () => {
         imageHeight: 200,
         imageAlt: "Custom image"
       });
-      if (data.message === "User is logged in") {
+      if (data.message === "User is Signed in") {
         setIsLoggedIn(true);
         setUsername(email);
         navigate('/');
@@ -49,7 +49,7 @@ const SignIn = () => {
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse gap-x-28">
           <div className="text-center lg:text-left">
-            <h1 className="text-7xl font-bold">Login now!</h1>
+            <h1 className="text-7xl font-bold">Sign In now!</h1>
             <p className="py-6 text-4xl">To Explore more</p>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 text-2xl">
@@ -66,14 +66,13 @@ const SignIn = () => {
                 </label>
                 <input name="password" type="password" placeholder="password" className="input input-bordered" required />
                 <label className="label">
-                  {/* <a href="#" className="label-text-alt link link-hover">Forgot password?</a> */}
                 </label>
                 <div>
                   <p>{ }</p>
                 </div>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-accent text-2xl">Login</button>
+                <button className="btn btn-accent text-2xl">Sign In</button>
               </div>
             </form>
             <p className="ml-8 mb-4">If it`s your first time, <Link className="text-purple-900 font-bold hover:bg-purple-200 p-2" to="/signup">Sign Up!</Link></p>
