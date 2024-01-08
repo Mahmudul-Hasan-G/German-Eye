@@ -13,20 +13,19 @@ router.post('/insert', async (req, res) => {
 
 
     try {
-        console.log(req.body);
+        console.log(req.body.city);
         const place = new Place({ userName, city, address, zipCode, image, placeName, description, likes });
 
-        await place.save();
+        const result = await place.save();
 
-
-        res.send('success');
+        console.log(result);
+        res.json(result);
 
     }
-    catch (err) {
-
-        res.json(err.message);
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
     }
-
 })
 
 router.get(('/places'), async (req, res) => {
@@ -56,7 +55,7 @@ router.get(('/city'), async (req, res) => {
 
 router.get(('/mydata'), CheckJwt, async (req, res) => {
     try {
-        const userName = req.query.username;
+        const userName = req.query.loggedUserName;
         console.log(userName);
         const mydata = await Place.find({
             userName: userName
@@ -92,30 +91,35 @@ router.get(('/placeByIdG'), async (req, res) => {
 router.post(('/placeById'), async (req, res) => {
     try {
         const placeId = req.body._id;
-        const username = req.body.username;
+        const username = req.body.loggedUserName;
         console.log(placeId, username);
         console.log(req.body);
         const placeDataById = await Place.findById({
             _id: placeId
         });
+        console.log(placeDataById.likes.length);
+        const userLiked = placeDataById.likes.some(like => like.username === username);
+        console.log(userLiked);
+        if (placeDataById) {
 
-        if (!placeDataById) {
+            const userLiked = placeDataById.likes.some(like => like.userLiked === username);
+            if (!userLiked) {
+                placeDataById.likes.push({ userLiked: username });
+                await placeDataById.save();
+                console.log('Like added successfully!');
+                res.json(placeDataById.likes.length);
+            } else {
+                console.log('User already liked this place.');
+
+            }
+
+        }
+        else {
             res.status(404).json({ message: 'Place not found' });
         }
 
-        if (placeDataById.likes === null) {
-            placeDataById.likes = [];
-        }
-        placeDataById.likes.push({ username: username });
-        await placeDataById.save();
-
-
-        res.json(placeDataById.likes.length);
-        console.log(placeDataById.likes.length);
-
-
     } catch (error) {
-
+        console.log(error);
         res.status(500).json({ message: error.message });
     }
 });

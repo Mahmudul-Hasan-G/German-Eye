@@ -30,7 +30,7 @@ const placeSchema = new mongoose.Schema({
         required: true
     },
     likes: [{
-        username: {
+        user: {
             type: String,
             unique: true
         }
