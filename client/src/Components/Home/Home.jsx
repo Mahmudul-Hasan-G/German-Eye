@@ -88,7 +88,7 @@ const Home = () => {
 
   return (
     <div>
-      <Marquee className="text-white bg-gradient-to-r from-blue-400 to-green-400" speed={20} direction="right" gradient={true} gradientColor={[239, 23, 23]}>
+      <Marquee className="text-white bg-gradient-to-r from-blue-400 to-green-400" speed={20} direction="left" gradient={true} gradientColor={[239, 23, 23]}>
         <h1 className="text-6xl mb-4 p-2">Your Life, Your Memories, Our Place.
         </h1>
       </Marquee>

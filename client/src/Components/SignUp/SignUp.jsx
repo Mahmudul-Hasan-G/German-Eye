@@ -10,6 +10,16 @@ const SignUp = () => {
     password: '',
     cPassword: ''
   });
+
+
+  const handleChange = (e) => {
+    console.log(e);
+
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(e);
@@ -39,11 +49,7 @@ const SignUp = () => {
   };
 
 
-  const handleChange = (e) => {
-    console.log(e);
 
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
 
   return (
     <div className="bg-cover" style={{ backgroundImage: `url(/images/gate.jpg)` }}>
