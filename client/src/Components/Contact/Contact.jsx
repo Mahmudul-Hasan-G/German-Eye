@@ -29,12 +29,12 @@ const Contact = () => {
 
 
             <div className="text-3xl grid grid-rows gap-4 border-solid border-2 border-yellow-500 p-4">
-                <h1>Mahmudul Hasan</h1>
-                <p className="flex items-center gap-3 "><MdMarkEmailRead />- mhasanwebd@gmail.com
+                <h1>Jemila Kaffaf</h1>
+                <p className="flex items-center gap-3 "><MdMarkEmailRead />- jemila.1997@outlook.it
                 </p>
-                <p className="flex items-center gap-3 "><FaLinkedin /> - https://www.linkedin.com/in/mahmudul-hasan-52961023b/</p>
-                <p className="flex items-center gap-3 "><FaSquareGithub /> - https://github.com/Mahmudul-Hasan-G</p>
-                <p className="flex items-center gap-3 "><FaInstagramSquare /> - </p>
+                <p className="flex items-center gap-3 "><FaLinkedin /> - https://www.linkedin.com/in/jemila-kaffaf-257204263/</p>
+                <p className="flex items-center gap-3 "><FaSquareGithub /> - https://github.com/JemilaK</p>
+                <p className="flex items-center gap-3 "><FaInstagramSquare /> - https://www.instagram.com/tech_for_future_/ </p>
             </div>
 
 
