@@ -18,7 +18,7 @@ const AboutUs = () => {
               <figure className="h-4/5"><img className="h-full" src="images/hasan.jpg" alt="Shoes" /></figure>
               <div className="card-body">
                 <h2 className="card-title">Hasan</h2>
-                <p>Web Developer from DCI</p>
+                <p className="font-bold">Web Developer from DCI</p>
 
               </div>
             </div>
@@ -28,7 +28,7 @@ const AboutUs = () => {
               <figure className="h-4/5"><img className="h-full" src="/images/Anu.jpg" alt="Shoes" /></figure>
               <div className="card-body">
                 <h2 className="card-title">Anuradha</h2>
-                <p>Web Developer from DCI</p>
+                <p className="font-bold">Web Developer from DCI</p>
 
               </div>
             </div>
@@ -38,7 +38,7 @@ const AboutUs = () => {
               <figure><img src="/images/Jemila.jpg" alt="Shoes" /></figure>
               <div className="card-body">
                 <h2 className="card-title">Jemila</h2>
-                <p>Web Developer from DCI</p>
+                <p className="font-bold">Web Developer from DCI</p>
 
               </div>
             </div>

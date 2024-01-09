@@ -24,7 +24,7 @@ const Contact = () => {
                 </p>
                 <p className="flex items-center gap-3 "><FaLinkedin /> - https://www.linkedin.com/in/anuradha-gundre-96b73725/</p>
                 <p className="flex items-center gap-3 "><FaSquareGithub /> - https://github.com/AnuMuley</p>
-                <p className="flex items-center gap-3 "><FaInstagramSquare /> - </p>
+                <p className="flex items-center gap-3 "><FaInstagramSquare /> -https://www.instagram.com/muleyanuradha/ </p>
             </div>
 
 
