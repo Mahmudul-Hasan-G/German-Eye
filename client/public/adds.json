@@ -2,31 +2,31 @@
     {
         "id": "01",
         "city": "Berlin",
-        "image": "./images/badd1.jpg"
+        "image": "./images/cloth.jpeg"
     },
     {
         "id": "02",
-        "city": "Berlin",
-        "image": "./images/1.avif"
+        "city": "Duisburg",
+        "image": "./images/show.jpeg"
     },
     {
         "id": "03",
-        "city": "Berlin",
-        "image": "./images/2.jpeg"
+        "city": "Stuttgart",
+        "image": "./images/50.jpeg"
     },
     {
         "id": "04",
-        "city": "Berlin",
-        "image": "./images/3.webp"
+        "city": "Frankfurt",
+        "image": "./images/pizza.jpeg"
     },
     {
         "id": "05",
-        "city": "Berlin",
-        "image": "./images/6.jpeg"
+        "city": "Munich",
+        "image": "./images/coffee.jpeg"
     },
     {
         "id": "06",
-        "city": "Berlin",
-        "image": "./images/5.jpg"
+        "city": "Hamburg",
+        "image": "./images/res.jpeg"
     }
 ]
