@@ -32,7 +32,7 @@ const Home = () => {
     console.log(allPlaces);
     if (city) {
       try {
-        const response = await axios.get('http://localhost:5000/city', { params: { city } })
+        const response = await axios.get('https://german-eye-backend.onrender.com/city', { params: { city } })
 
         console.log(response.data);
         console.log(response.data.length);

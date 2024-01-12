@@ -35,7 +35,7 @@ const PlaceDetail = () => {
         try {
             if (isLiked === false) {
                 setIsLiked(true);
-                const response = await axios.post('http://localhost:5000/placeById', { loggedUserName, _id });
+                const response = await axios.post('https://german-eye-backend.onrender.com/placeById', { loggedUserName, _id });
 
                 console.log(response);
                 setNLikes(response.data);

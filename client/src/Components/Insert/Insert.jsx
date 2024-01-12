@@ -64,7 +64,7 @@ const Insert = () => {
 
     try {
       console.log(place);
-      const response = await axios.post('http://localhost:5000/insert', place);
+      const response = await axios.post('https://german-eye-backend.onrender.com/insert', place);
       console.log(response);
       if (response) {
         await Swal.fire({
