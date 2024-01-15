@@ -90,14 +90,13 @@ const Header = () => {
               <li><Link to='/'>Home</Link></li>
               <li>
                 <Link onClick={handleAllData} >Places</Link>
-
+              </li>
+              <li>
+                <Link to='/library'>Library</Link>
               </li>
               {isLoggedIn ? (
                 <>
-                  <li>
 
-                    <Link to='/library'>Library</Link>
-                  </li>
                   <li><Link to='/insert'>Insert</Link></li>
                   <li><button onClick={handleMyData}>My Data</button></li>
 
@@ -122,12 +121,13 @@ const Header = () => {
 
 
             </li>
+            <li>
+
+              <Link to='/library'>Library</Link>
+            </li>
             {isLoggedIn ? (
               <>
-                <li>
 
-                  <Link to='/library'>Library</Link>
-                </li>
                 <li><Link to='/insert'>Insert</Link></li>
                 <li><button onClick={handleMyData}>My Data</button></li>
               </>

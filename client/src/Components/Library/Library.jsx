@@ -1,11 +1,37 @@
 
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Common/authContext";
+import Swal from 'sweetalert2';
 
 
 const Library = () => {
   const navigate = useNavigate();
+  const { isLoggedIn } = useAuth();
   const handleClick = (book, image) => {
-    navigate("/book", { state: { book, image } });
+    if (isLoggedIn) {
+      navigate("/book", { state: { book, image } });
+    }
+    else {
+      Swal.fire({
+        title: "To see the detail You have to signIn",
+        showClass: {
+          popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+        },
+        hideClass: {
+          popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+        }
+
+      });
+      navigate('/signin');
+    }
   }
 
 
