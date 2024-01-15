@@ -32,7 +32,7 @@ const Home = () => {
     console.log(allPlaces);
     if (city) {
       try {
-        const response = await axios.get('http://localhost:5000/city', { params: { city } })
+        const response = await axios.get('https://german-eye-backend.onrender.com/city', { params: { city } })
 
         console.log(response.data);
         console.log(response.data.length);
@@ -89,7 +89,7 @@ const Home = () => {
 
   return (
     <div>
-      <Marquee className="text-white bg-gradient-to-r from-blue-400 to-green-400" speed={20} direction="left" gradient={true} gradientColor={[239, 23, 23]}>
+      <Marquee className="text-white bg-gradient-to-r from-blue-400 to-green-400" speed={90} direction="left" gradient={true} gradientColor={[239, 23, 23]}>
         <h1 className="text-6xl mb-4 p-2">Your Life, Your Memories, Our Place.
         </h1>
       </Marquee>

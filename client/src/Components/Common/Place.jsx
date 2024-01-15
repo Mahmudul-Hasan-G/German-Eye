@@ -21,7 +21,7 @@ const Place = ({ place }) => {
 
     const checkLikes = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/placeByIdG', { params: { _id } });
+            const response = await axios.get('https://german-eye-backend.onrender.com/placeByIdG', { params: { _id } });
             setScity(response.data);
         } catch (err) {
             console.log(err.message);

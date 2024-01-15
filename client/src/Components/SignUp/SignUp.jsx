@@ -24,7 +24,7 @@ const SignUp = () => {
     e.preventDefault();
     console.log(e);
     try {
-      const response = await axios.post('http://localhost:5000/signup', user);
+      const response = await axios.post('https://german-eye-backend.onrender.com/signup', user);
 
       console.log('User signed up successfully:', response.data);
 

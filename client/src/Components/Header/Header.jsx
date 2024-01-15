@@ -14,8 +14,8 @@ const Header = () => {
   const handleAllData = async () => {
 
     try {
-      const response = await axios.get('http://localhost:5000/places');
- 
+      const response = await axios.get('https://german-eye-backend.onrender.com/places');
+
       setAllPlaces(response.data);
       navigate('/places');
     } catch (error) {
@@ -28,7 +28,7 @@ const Header = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/mydata', { params: { loggedUserName }, headers: { Authorization: token }, });
+      const response = await axios.get('https://german-eye-backend.onrender.com/mydata', { params: { loggedUserName }, headers: { Authorization: token }, });
       console.log(response);
       if (response.data.length != 0) {
         setAllPlaces(response.data);
@@ -67,7 +67,7 @@ const Header = () => {
   const handleSignOut = async () => {
     try {
 
-      const response = await axios.post('http://localhost:5000/signout');
+      const response = await axios.post('https://german-eye-backend.onrender.com/signout');
       navigate('/');
       if (response.status === 200) {
         localStorage.removeItem('token');
@@ -90,14 +90,13 @@ const Header = () => {
               <li><Link to='/'>Home</Link></li>
               <li>
                 <Link onClick={handleAllData} >Places</Link>
-
+              </li>
+              <li>
+                <Link to='/library'>Library</Link>
               </li>
               {isLoggedIn ? (
                 <>
-                  <li>
 
-                    <Link to='/library'>Library</Link>
-                  </li>
                   <li><Link to='/insert'>Insert</Link></li>
                   <li><button onClick={handleMyData}>My Data</button></li>
 
@@ -122,12 +121,13 @@ const Header = () => {
 
 
             </li>
+            <li>
+
+              <Link to='/library'>Library</Link>
+            </li>
             {isLoggedIn ? (
               <>
-                <li>
 
-                  <Link to='/library'>Library</Link>
-                </li>
                 <li><Link to='/insert'>Insert</Link></li>
                 <li><button onClick={handleMyData}>My Data</button></li>
               </>
